@@ -25,14 +25,66 @@
     --color-primary: #BB421B;
     --color-light: #EEE7E7;
     --color-dark: #141414;
-    --color-gray: #646464;
+    --color-gray: #D2D2D2;
+    --gradient: linear-gradient(263deg, rgba(104, 60, 18, 0.21) 0%, rgba(62, 30, 0, 0.21) 100%);
+}
+
+html, body {
+    width: 100%;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+img {
+    max-inline-size: 100%;
+    height: auto;
+    display: block;
+}
+
+@utility typo {
+    @apply font-normal leading-[1.6] tracking-[0.01em];
 }
 
 @layer components {
+
     .wrapper {
         @apply flex flex-col min-h-full overflow-clip;
     }
+
+    .section-container {
+        @apply w-full mx-auto px-6 lg:px-10;
+    }
+
+    #header {
+        @apply fixed z-20 top-0 w-full py-6 lg:py-10;
+
+        canvas {
+            @apply w-12.5 h-12.5 cursor-pointer;
+        }
+    }
+
+    #hero {
+        @apply h-dvh flex items-center justify-center pt-26;
+        background: var(--gradient),
+                    url("/images/home-img.jpg") center / cover no-repeat;
+
+        h1 {
+            @apply uppercase font-black text-[clamp(80px,16vw,320px)] leading-[0.94] tracking-[0.14em];
+        }
+
+        h3 {
+            @apply text-gray tracking-[0.19em] text-[clamp(18px,8vw,38px)];
+        }
+
+        p {
+            @apply typo max-w-110.5;
+        }
+    }
+
     main {
         @apply flex-auto w-full overflow-x-hidden;
     }
+
 }
