@@ -1,4 +1,42 @@
+import {useGSAP} from "@gsap/react";
+import gsap from "gsap";
+import {SplitText} from "gsap/all";
+
 const Hero = () => {
+
+	useGSAP(() => {
+		const splitTitle = SplitText.create('#hero h1', {type: 'chars, words'})
+		const splitSubTitle = SplitText.create('#hero h3', {type: 'chars, words'})
+		const splitParagraph = SplitText.create('#hero p', {type: 'lines'})
+
+
+		gsap.from(splitTitle.chars, {
+			yPercent: 40,
+			duration: 1.5,
+			ease: 'expo.Out',
+			stagger: 0.04,
+			opacity: 0
+		})
+
+		gsap.from(splitSubTitle.words, {
+			yPercent: -20,
+			duration: 1.5,
+			ease: 'expo.Out',
+			stagger: 0.06,
+			opacity: 0,
+			delay: .8
+		})
+
+		gsap.from(splitParagraph.lines, {
+			yPercent: 20,
+			duration: 1,
+			ease: 'expo.Out',
+			stagger: 0.11,
+			opacity: 0,
+			delay: 1.2
+		})
+	})
+
 	return (
 		<section id="hero">
 			<div className="section-container">
