@@ -87,4 +87,20 @@ img {
         @apply flex-auto w-full overflow-x-hidden;
     }
 
+    .info-scrolling {
+        @apply relative h-dvh;
+
+        .info-scroll-item {
+            @apply absolute inset-0 flex items-center justify-center;
+        }
+
+        p {
+            @apply max-w-[90%] lg:max-w-[55%] leading-normal tracking-[0.01em] text-center text-[clamp(18px,6vw,36px)];
+
+            span {
+                @apply text-primary;
+            }
+        }
+    }
+
 }

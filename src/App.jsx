@@ -1,9 +1,11 @@
 import gsap from 'gsap';
-import {ScrollTrigger} from "gsap/all";
+import {ScrollTrigger, SplitText} from "gsap/all";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
+import InfoScrolling from "./components/InfoScrolling.jsx";
+import {infoScrollingParagraphs} from "./constants/index.jsx";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 function App() {
 
@@ -12,6 +14,7 @@ function App() {
       <main>
           <Header/>
           <Hero/>
+          <InfoScrolling text={infoScrollingParagraphs}/>
       </main>
     </div>
   )
