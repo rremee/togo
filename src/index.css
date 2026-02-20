@@ -85,6 +85,10 @@ img {
 
     main {
         @apply flex-auto w-full overflow-x-hidden;
+
+        h2 {
+            @apply text-primary uppercase leading-[1.14] tracking-[0.01em] font-bold text-[clamp(60px,12vw,244px)];
+        }
     }
 
     .info-scrolling {
@@ -101,6 +105,10 @@ img {
                 @apply text-primary;
             }
         }
+    }
+
+    .header-item {
+        @apply h-dvh flex items-center justify-center;
     }
 
 }

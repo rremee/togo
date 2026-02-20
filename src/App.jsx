@@ -4,6 +4,7 @@ import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import InfoScrolling from "./components/InfoScrolling.jsx";
 import {infoScrollingParagraphs} from "./constants/index.jsx";
+import HeadingScrollHorizontal from "./components/HeadingScrollHorizontal.jsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -15,6 +16,7 @@ function App() {
           <Header/>
           <Hero/>
           <InfoScrolling text={infoScrollingParagraphs}/>
+          <HeadingScrollHorizontal header='Background'/>
       </main>
     </div>
   )
