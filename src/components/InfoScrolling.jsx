@@ -20,12 +20,15 @@ const InfoScrolling = ({text}) => {
 			}
 		});
 
-		items.forEach((item) => {
+		items.forEach((item, i) => {
+
+			const offset = i === 0 ? '+=0.7' : '+=0.2'
+
 			timeline
 				.fromTo(item,
 					{opacity: 0, y: 50},
-					{opacity: 1, y: 0, duration: 1, ease: 'power1.out', delay: .5})
-				.to(item, {opacity: 0, y: -50, duration: 1, ease: 'power1.out', delay: .7})
+					{opacity: 1, y: 0, duration: 1, ease: 'power1.out'}, offset)
+				.to(item, {opacity: 0, y: -50, duration: 1, ease: 'power1.out'}, '+=1')
 		})
 
 	}, [text])
