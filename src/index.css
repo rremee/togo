@@ -76,7 +76,7 @@ img {
         }
 
         h3 {
-            @apply text-gray tracking-[0.19em] text-[clamp(18px,8vw,38px)];
+            @apply text-gray tracking-[0.19em] text-[clamp(18px,8vw,38px)] text-nowrap whitespace-nowrap;
         }
 
         p {
