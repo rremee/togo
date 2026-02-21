@@ -27,6 +27,7 @@
     --color-dark: #141414;
     --color-gray: #D2D2D2;
     --gradient: linear-gradient(263deg, rgba(104, 60, 18, 0.21) 0%, rgba(62, 30, 0, 0.21) 100%);
+    --breakpoint-desktop: 1254px;
 }
 
 html, body {
@@ -44,7 +45,7 @@ img {
 }
 
 @utility typo {
-    @apply font-normal leading-[1.6] tracking-[0.01em];
+    @apply text-[clamp(14px,4vw,20px)] font-normal leading-[1.6] tracking-[0.01em];
 }
 
 @layer components {
@@ -88,6 +89,14 @@ img {
 
         h2 {
             @apply text-primary uppercase leading-[1.14] tracking-[0.01em] font-bold text-[clamp(60px,12vw,244px)];
+        }
+
+        h3 {
+            @apply leading-normal text-[clamp(24px,7vw,36px)] tracking-[0.01em];
+        }
+
+        .quote {
+            @apply text-[clamp(12px,5vw,20px)] leading-[1.6] tracking-[0.01em] text-primary;
         }
     }
 

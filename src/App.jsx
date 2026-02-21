@@ -5,6 +5,7 @@ import Hero from "./components/Hero.jsx";
 import InfoScrolling from "./components/InfoScrolling.jsx";
 import {infoScrollingParagraphs} from "./constants/index.jsx";
 import HeadingScrollHorizontal from "./components/HeadingScrollHorizontal.jsx";
+import BackgroundView from "./components/BackgroundView.jsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -13,10 +14,11 @@ function App() {
   return (
     <div className='wrapper'>
       <main>
-          <Header/>
-          <Hero/>
-          <InfoScrolling text={infoScrollingParagraphs}/>
-          <HeadingScrollHorizontal header='Background'/>
+          {/*<Header/>*/}
+          {/*<Hero/>*/}
+          {/*<InfoScrolling text={infoScrollingParagraphs}/>*/}
+          {/*<HeadingScrollHorizontal header='Background'/>*/}
+          <BackgroundView/>
       </main>
     </div>
   )
