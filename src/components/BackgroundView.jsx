@@ -7,11 +7,10 @@ const BackgroundView = () => {
 	return (
 		<section id="backgroundview">
 			<BackgroundFirst />
+			<BackgroundSecond/>
 			<div className="section-container">
 
-				<div className='puppy-background'>
 
-				</div>
 
 				<div className='puppy-final'>
 
@@ -111,6 +110,24 @@ const BackgroundFirst = () => {
 					</div>
 				</div>
 
+			</div>
+		</div>
+	);
+};
+
+const BackgroundSecond = () => {
+	return (
+		<div className='puppy-background'>
+			<div className="section-container">
+				<div className='space-y-20 max-w-115 justify-self-end'>
+					<p className='typo'>
+						When he reached six months of age, Seppala decided he'd had enough of the puppy's mischief, and gave him away to a woman who was looking for a house pet. Togo, however, did not take to the domestic life of a pet, and even though the woman spoiled him, he because worse and worse.
+					</p>
+
+					<p className='typo'>
+						In a matter of weeks, Togo had escaped from the woman's house by leaping through a windowpane and working his way meticulously back to Seppala's kennels. Amazed, Sepp took him back, later saying of him that "a dog so devoted to his first friends deserved to be accepted".
+					</p>
+				</div>
 			</div>
 		</div>
 	);

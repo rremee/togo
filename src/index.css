@@ -55,7 +55,7 @@ img {
     }
 
     .section-container {
-        @apply w-full mx-auto px-6 lg:px-10;
+        @apply max-w-300 w-full mx-auto px-6 lg:px-10;
     }
 
     #header {
@@ -118,6 +118,12 @@ img {
 
     .header-item {
         @apply h-dvh flex items-center justify-center;
+    }
+
+    .puppy-background {
+        @apply h-dvh flex items-center;
+        background: var(--gradient),
+                    url("/images/background-2.png") left center / cover no-repeat;
     }
 
 }
