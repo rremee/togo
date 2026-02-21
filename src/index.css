@@ -58,6 +58,10 @@ img {
         @apply max-w-300 w-full mx-auto px-6 lg:px-10;
     }
 
+    .section-margin {
+        @apply mt-87;
+    }
+
     #header {
         @apply fixed z-20 top-0 w-full py-6 lg:py-10;
 

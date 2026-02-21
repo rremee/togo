@@ -116,10 +116,30 @@ const BackgroundFirst = () => {
 };
 
 const BackgroundSecond = () => {
+
+	const containerRef = useRef(null);
+
+	useGSAP(() => {
+		const splitText = SplitText.create('.typo', {type: 'lines'});
+
+		gsap.from(splitText.lines,  {
+			scrollTrigger: {
+				trigger: containerRef.current,
+				start: 'top 60%'
+			},
+			y: 40,
+			opacity: 0,
+			duration: 1.5,
+			ease: 'expo.out',
+			stagger: 0.05,
+		})
+
+	}, {scope: containerRef})
+
 	return (
-		<div className='puppy-background'>
+		<div className='puppy-background section-margin'>
 			<div className="section-container">
-				<div className='space-y-20 max-w-115 justify-self-end'>
+				<div ref={containerRef} className='space-y-20 max-w-115 justify-self-end'>
 					<p className='typo'>
 						When he reached six months of age, Seppala decided he'd had enough of the puppy's mischief, and gave him away to a woman who was looking for a house pet. Togo, however, did not take to the domestic life of a pet, and even though the woman spoiled him, he because worse and worse.
 					</p>
