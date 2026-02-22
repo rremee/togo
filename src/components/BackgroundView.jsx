@@ -164,13 +164,15 @@ const BackgroundThird = () => {
 	}, {scope: containerRef})
 
 	return (
-		<div ref={containerRef} className='puppy-final'>
+		<div ref={containerRef} className='puppy-final relative'>
 			<div className="section-container">
 				<h3 className="md:max-w-[80%]">
 					However, Togo had not ceased to be a problem. He continued to harrass Sepp's teams whenever they hit the trail. Whenever Togo got free of the kennel, and met a returning team, he'd dart up to its leader and jump at him.
 				</h3>
 				<div className="flex flex-col desktop:flex-row gap-15 desktop:gap-30 mt-16 relative">
-					<img ref={arrowRef} src="/images/background-arrow.svg" alt="Arrow" className='absolute bottom-[-55%]  desktop:left-[10%] md:bottom-[-90%] desktop:bottom-[-150%]! w-[clamp(140px,20vw,520px)] desktop:w-auto'/>
+					<img ref={arrowRef} src="/images/background-arrow.svg" alt="Arrow" className='absolute hidden! sm:block! bottom-[-44%] left-[4%] desktop:left-[10%] md:bottom-[-90%] desktop:bottom-[-150%]! w-[clamp(140px,20vw,520px)] desktop:w-auto'/>
+					<SunSVG className='absolute right-0 top-[110%] desktop:right-[-5%] desktop:top-[90%]'/>
+
 					<p className="typo max-w-120">
 						Doing this almost cost him his life once, when he ran up to a team of trail-hardened malamutes and was mauled. Togo had him rushed by dogsled to his kennels for medical attention. However, this experience would actually help to make him a better racing dog, as one of the hardest things to teach an inexperienced lead dog is how to pass another team without getting distracted and possibly being lured into a fight.
 					</p>
@@ -194,7 +196,7 @@ const BackgroundThird = () => {
 	);
 };
 
-const SunSVG = () => {
+const SunSVG = ({className}) => {
 
 	const sunRef = useRef(null);
 
@@ -235,7 +237,7 @@ const SunSVG = () => {
 			viewBox="0 0 366 267"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			className="w-55 h-auto"
+			className={`w-55 h-auto ${className || ''}`}
 		>
 			<g className='rays'>
 				<path d="M365.714 11.2627C365.051 9.93771 282.237 64.2641 181.534 131.841C80.8313 199.418 -0.658506 255.069 0.00401129 256.394C0.666529 257.719 83.4813 203.393 184.184 135.816C284.887 68.2393 366.376 12.5878 365.714 11.2627Z" fill="#FFB097" />
