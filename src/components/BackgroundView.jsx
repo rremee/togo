@@ -2,20 +2,14 @@ import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import {SplitText} from "gsap/all";
 import {useRef} from "react";
+import {useMediaQuery} from "react-responsive";
 
 const BackgroundView = () => {
 	return (
 		<section id="backgroundview">
-			<BackgroundFirst />
-			<BackgroundSecond/>
-			<div className="section-container">
-
-
-
-				<div className='puppy-final'>
-
-				</div>
-			</div>
+			{/*<BackgroundFirst />*/}
+			{/*<BackgroundSecond/>*/}
+			<BackgroundThird />
 		</section>
 	);
 };
@@ -146,6 +140,54 @@ const BackgroundSecond = () => {
 
 					<p className='typo'>
 						In a matter of weeks, Togo had escaped from the woman's house by leaping through a windowpane and working his way meticulously back to Seppala's kennels. Amazed, Sepp took him back, later saying of him that "a dog so devoted to his first friends deserved to be accepted".
+					</p>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+const BackgroundThird = () => {
+
+	const arrowRef = useRef(null);
+	const containerRef = useRef(null);
+
+	useGSAP(() => {
+
+		gsap.to(arrowRef.current, {
+			rotation: 15,
+			ease: 'sine.inOut',
+			duration: 3,
+			repeat: -1,
+			yoyo: true
+		})
+
+	}, {scope: containerRef})
+
+	return (
+		<div ref={containerRef} className='puppy-final'>
+			<div className="section-container">
+				<h3 className="md:max-w-[80%]">
+					However, Togo had not ceased to be a problem. He continued to harrass Sepp's teams whenever they hit the trail. Whenever Togo got free of the kennel, and met a returning team, he'd dart up to its leader and jump at him.
+				</h3>
+				<div className="flex flex-col desktop:flex-row gap-15 desktop:gap-30 mt-16 relative">
+					<img ref={arrowRef} src="/images/background-arrow.svg" alt="Arrow" className='absolute bottom-[-55%]  desktop:left-[10%] md:bottom-[-90%] desktop:bottom-[-150%]! w-[clamp(140px,20vw,520px)] desktop:w-auto'/>
+					<p className="typo max-w-120">
+						Doing this almost cost him his life once, when he ran up to a team of trail-hardened malamutes and was mauled. Togo had him rushed by dogsled to his kennels for medical attention. However, this experience would actually help to make him a better racing dog, as one of the hardest things to teach an inexperienced lead dog is how to pass another team without getting distracted and possibly being lured into a fight.
+					</p>
+					<p className="typo max-w-130">
+						Togo never pestered another team again, always giving an approaching team a wide berth. When he would "pass by" another team going in the same direction, he would dig in, pull on the harness, yelp and rush on ahead.
+					</p>
+				</div>
+				<div className="mt-56 ml-auto max-w-124 flex flex-col gap-8 desktop:gap-10 quote-block">
+					<div>
+						<img src="/images/quote.svg" alt="Quote" className='w-[20%]'/>
+					</div>
+					<h3>
+						...like a lot of humans, Togo had learned the hard way
+					</h3>
+					<p className="quote">
+						—  Leonhard Seppala
 					</p>
 				</div>
 			</div>
