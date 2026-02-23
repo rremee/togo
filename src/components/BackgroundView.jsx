@@ -6,9 +6,9 @@ import {useRef} from "react";
 const BackgroundView = () => {
 	return (
 		<section id="backgroundview">
-			{/*<BackgroundFirst />*/}
-			{/*<BackgroundSecond/>*/}
 			<div className='h-dvh'></div>
+			<BackgroundFirst />
+			<BackgroundSecond/>
 			<BackgroundThird />
 		</section>
 	);
@@ -21,43 +21,59 @@ const BackgroundFirst = () => {
 
 	useGSAP(() => {
 
-		const splitText = SplitText.create('.typo', {type: 'lines'});
-		const splitQuote = SplitText.create('.quote-block h3', {type: 'words'});
-		const timeline = gsap.timeline({defaults: {ease: 'expo.out'}});
+		const paragraphs = Array.from(containerRef.current.querySelectorAll(".typo"));
 
 		gsap.from(imageRef.current, {
 			opacity: 0,
 			xPercent: -10,
 			duration: 2,
-			ease: 'expo.out'
-		})
-
-		gsap.from(splitText.lines, {
-			y: 40,
-			opacity: 0,
-			duration: 1.5,
 			ease: 'expo.out',
-			stagger: 0.05,
+			scrollTrigger: {
+				trigger: imageRef.current,
+				start: 'top 65%'
+			}
 		})
 
-		timeline
-		.from('.quote-block img', {
-			yPercent: -50,
-			scale: 0,
-			opacity: 0,
-			duration: 1
-		}, '+=0.3')
-		.from(splitQuote.words, {
-			yPercent: -10,
-			duration: 1.5,
-			opacity: 0,
-			stagger: 0.058
-		}, '-=0.6')
-		.from('.quote-block .quote', {
-			yPercent: -10,
-			duration: 1,
-			opacity: 0,
-		}, '-=0.8')
+		paragraphs.forEach(paragraph => {
+			const split = SplitText.create(paragraph, {type: 'lines'})
+			gsap.from(split.lines, {
+				y: 40,
+				opacity: 0,
+				duration: 1.5,
+				ease: 'expo.out',
+				stagger: 0.05,
+				scrollTrigger: {
+					trigger: paragraph,
+					start: 'top 85%'
+				}
+			})
+		})
+
+		const quoteHeader = containerRef.current.querySelector('.quote-block h3');
+		const splitQuoteHeading = SplitText.create(quoteHeader, {type: 'words'})
+		const quoteTl = gsap.timeline({
+			scrollTrigger: {
+				trigger: '.quote-block',
+				start: 'top 85%',
+			}
+		});
+
+		quoteTl
+			.from('.quote-block img', {
+				scale: 0,
+				opacity: 0,
+				duration: 0.8
+			})
+			.from(splitQuoteHeading.words, {
+				yPercent: -10,
+				duration: 1.5,
+				opacity: 0,
+				stagger: 0.058
+			}, '-=0.3')
+			.from('.quote-block .quote', {
+				opacity: 0,
+				duration: 0.8
+			}, '-=1');
 
 	}, {scope: containerRef})
 
