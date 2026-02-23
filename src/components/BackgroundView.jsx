@@ -8,6 +8,7 @@ const BackgroundView = () => {
 		<section id="backgroundview">
 			{/*<BackgroundFirst />*/}
 			{/*<BackgroundSecond/>*/}
+			<div className='h-dvh'></div>
 			<BackgroundThird />
 		</section>
 	);
@@ -152,16 +153,86 @@ const BackgroundThird = () => {
 	const containerRef = useRef(null);
 
 	useGSAP(() => {
+		const splitHeader = SplitText.create('h3:first-of-type', { type: 'lines' });
+		gsap.from(splitHeader.lines, {
+			scrollTrigger: {
+				trigger: 'h3:first-of-type',
+				start: 'top 50%'
+			},
+			y: -10,
+			opacity: 0,
+			duration: 1.5,
+			stagger: 0.07
+		});
 
-		gsap.to(arrowRef.current, {
-			rotation: 15,
-			ease: 'sine.inOut',
-			duration: 3,
-			repeat: -1,
-			yoyo: true
+		const paragraphs = Array.from(containerRef.current.querySelectorAll('.typo'));
+		paragraphs.forEach(p => {
+			const split = SplitText.create(p, {type: 'lines'});
+			gsap.from(split.lines, {
+				scrollTrigger: {
+					trigger: p,
+					start: 'top 60%'
+				},
+				y: -10,
+				opacity: 0,
+				duration: 3,
+				stagger: 0.06,
+				ease: 'expo.out'
+			})
 		})
 
-	}, {scope: containerRef})
+		gsap.from('.sun-icon', {
+			opacity: 0,
+			scale: 0.5,
+			duration: 2,
+			scrollTrigger: {
+				trigger: '.sun-icon',
+				start: 'top 90%',
+			}
+		});
+
+		gsap.from(arrowRef.current, {
+			opacity: 0,
+			x: -40,
+			duration: 1.5,
+			scrollTrigger: {
+				trigger: arrowRef.current,
+				start: 'top 80%',
+			},
+			onEnter: () => {
+				gsap.to(arrowRef.current, {
+					rotation: 15, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
+				});
+			}
+		});
+
+		const quoteHeading = containerRef.current.querySelector('.quote-block h3');
+		const splitQuoteHeading = SplitText.create(quoteHeading, {type: 'words'})
+		const quoteTl = gsap.timeline({
+			scrollTrigger: {
+				trigger: '.quote-block',
+				start: 'top 85%',
+			}
+		});
+
+		quoteTl
+			.from('.quote-block img', {
+				scale: 0,
+				opacity: 0,
+				duration: 0.8
+			})
+			.from(splitQuoteHeading.words, {
+				yPercent: -10,
+				duration: 1.5,
+				opacity: 0,
+				stagger: 0.058
+			}, '-=0.3')
+			.from('.quote-block .quote', {
+				opacity: 0,
+				duration: 0.8
+			}, '-=1');
+
+	}, { scope: containerRef });
 
 	return (
 		<div ref={containerRef} className='puppy-final relative'>
@@ -171,7 +242,7 @@ const BackgroundThird = () => {
 				</h3>
 				<div className="flex flex-col desktop:flex-row gap-15 desktop:gap-30 mt-16 relative">
 					<img ref={arrowRef} src="/images/background-arrow.svg" alt="Arrow" className='absolute hidden! sm:block! bottom-[-44%] left-[4%] desktop:left-[10%] md:bottom-[-90%] desktop:bottom-[-150%]! w-[clamp(140px,20vw,520px)] desktop:w-auto'/>
-					<SunSVG className='absolute right-0 top-[110%] desktop:right-[-5%] desktop:top-[90%]'/>
+					<SunSVG className='absolute right-0 top-[110%] desktop:right-[-5%] desktop:top-[90%] sun-icon'/>
 
 					<p className="typo max-w-120">
 						Doing this almost cost him his life once, when he ran up to a team of trail-hardened malamutes and was mauled. Togo had him rushed by dogsled to his kennels for medical attention. However, this experience would actually help to make him a better racing dog, as one of the hardest things to teach an inexperienced lead dog is how to pass another team without getting distracted and possibly being lured into a fight.
@@ -196,7 +267,7 @@ const BackgroundThird = () => {
 	);
 };
 
-const SunSVG = ({className}) => {
+const SunSVG = ({ className }) => {
 
 	const sunRef = useRef(null);
 
