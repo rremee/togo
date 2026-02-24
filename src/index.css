@@ -112,7 +112,7 @@ img {
         }
 
         p {
-            @apply max-w-[90%] lg:max-w-[55%] leading-normal tracking-[0.01em] text-center text-[clamp(18px,6vw,36px)];
+            @apply max-w-[90%] lg:max-w-[70%] leading-normal tracking-[0.01em] text-center text-[clamp(18px,6vw,36px)];
 
             span {
                 @apply text-primary;

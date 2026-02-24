@@ -6,7 +6,6 @@ import {useRef} from "react";
 const BackgroundView = () => {
 	return (
 		<section id="backgroundview">
-			<div className='h-dvh'></div>
 			<BackgroundFirst />
 			<BackgroundSecond/>
 			<BackgroundThird />
@@ -251,7 +250,7 @@ const BackgroundThird = () => {
 	}, { scope: containerRef });
 
 	return (
-		<div ref={containerRef} className='puppy-final relative'>
+		<div ref={containerRef} className='puppy-final relative section-margin'>
 			<div className="section-container">
 				<h3 className="md:max-w-[80%]">
 					However, Togo had not ceased to be a problem. He continued to harrass Sepp's teams whenever they hit the trail. Whenever Togo got free of the kennel, and met a returning team, he'd dart up to its leader and jump at him.

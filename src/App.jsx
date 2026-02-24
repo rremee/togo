@@ -14,10 +14,10 @@ function App() {
   return (
     <div className='wrapper'>
       <main>
-          {/*<Header/>*/}
-          {/*<Hero/>*/}
-          {/*<InfoScrolling text={infoScrollingParagraphs}/>*/}
-          {/*<HeadingScrollHorizontal header='Background'/>*/}
+          <Header/>
+          <Hero/>
+          <InfoScrolling text={infoScrollingParagraphs}/>
+          <HeadingScrollHorizontal header='Background'/>
           <BackgroundView/>
       </main>
     </div>
