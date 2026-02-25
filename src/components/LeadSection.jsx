@@ -8,6 +8,7 @@ const LeadSection = () => {
 		<section id="born-to-lead">
 			{/*<div className='h-dvh'></div>*/}
 			<LeadHeader/>
+			<LeadView/>
 			{/*<div className='h-dvh'></div>*/}
 
 		</section>
@@ -79,6 +80,25 @@ const LeadHeader = () => {
 		</div>
 	);
 };
+
+const LeadView = () => {
+	return (
+		<div className='section-container desktop:mt-60 mt-40'>
+			<div className='flex flex-col desktop:flex-row items-center justify-between gap-15 dekstop:gap-30'>
+				<div className='lead-view-img desktop:-ml-46 rotate-5'>
+				</div>
+				<div className='max-w-115 space-y-11'>
+					<p className="typo">
+						Sepp had tied Togo up, leaving instructions that he be kept secure for two days after his departure, because he didn't want Togo chasing after the team and then harrassing the dogs in the rush they were in. Togo hated being tied up, and the same night that Sepp left.
+					</p>
+					<p className="typo">
+						Togo broke free from his tether and jumped the seven-foot-high fence of the kennel, but got one of his hind legs caught in the wire mesh at the top of the fence. Squealing and yelping, he caught the attention of a kennel assistant, who came out and cut the mesh to free him. Togo dropped to the ground, rolled over, and immediately set off after Sepp and the team.
+					</p>
+				</div>
+			</div>
+		</div>
+	)
+}
 
 const ArrowSVG = ({className}) => {
 	return (

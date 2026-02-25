@@ -130,4 +130,12 @@ img {
                     url("/images/background-2.png") left center / cover no-repeat;
     }
 
+    .lead-view-img {
+        @apply w-full desktop:max-w-195 h-80 max-[500px]:h-50 md:h-104;
+        background: var(--gradient),
+                    url("/images/lead-1.png") center / cover no-repeat;
+    }
+
+
+
 }
