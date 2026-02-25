@@ -6,10 +6,10 @@ import {SplitText} from 'gsap/all';
 const LeadSection = () => {
 	return (
 		<section id="born-to-lead">
-			{/*<div className='h-dvh'></div>*/}
+			<div className='h-dvh'></div>
 			<LeadHeader/>
 			<LeadView/>
-			{/*<div className='h-dvh'></div>*/}
+			<div className='h-dvh'></div>
 
 		</section>
 	);
@@ -82,10 +82,42 @@ const LeadHeader = () => {
 };
 
 const LeadView = () => {
+
+	const containerRef = useRef(null);
+	const imageRef = useRef(null);
+
+	useGSAP(() => {
+		const splitText = SplitText.create('.typo', {type: 'lines'});
+
+		gsap.from(splitText.lines,  {
+			scrollTrigger: {
+				trigger: containerRef.current,
+				start: 'top 60%'
+			},
+			y: 40,
+			opacity: 0,
+			duration: 1,
+			ease: 'expo.out',
+			stagger: 0.05,
+		})
+
+		gsap.from(imageRef.current, {
+			opacity: 0,
+			xPercent: -10,
+			duration: 2,
+			ease: 'expo.out',
+			scrollTrigger: {
+				trigger: imageRef.current,
+				start: 'top 65%'
+			}
+		})
+
+	}, {scope: containerRef})
+
 	return (
 		<div className='section-container desktop:mt-60 mt-40'>
-			<div className='flex flex-col desktop:flex-row items-center justify-between gap-15 dekstop:gap-30'>
-				<div className='lead-view-img desktop:-ml-46 rotate-5'>
+			<div ref={containerRef} className='flex flex-col desktop:flex-row items-center justify-between gap-15 dekstop:gap-30'>
+				<div ref={imageRef} className='lead-view-img desktop:-ml-46 rotate-5'>
 				</div>
 				<div className='max-w-115 space-y-11'>
 					<p className="typo">
