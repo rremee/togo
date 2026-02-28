@@ -138,6 +138,8 @@ const LeadView = () => {
 
 const LeadContent = () => {
 
+	const mainContainerRef = useRef(null);
+
 	const container1Ref = useRef(null);
 	const text1Ref = useRef(null);
 	const container2Ref = useRef(null);
@@ -146,8 +148,28 @@ const LeadContent = () => {
 	useMarqueeText(container1Ref, text1Ref);
 	useMarqueeText(container2Ref, text2Ref);
 
+	useGSAP(() => {
+
+		const paragraphs = mainContainerRef.current.querySelectorAll('p');
+		paragraphs.forEach(paragraph => {
+			const split = SplitText.create(paragraph, {type: 'lines'});
+			gsap.from(split.lines, {
+				opacity: 0,
+				y: -10,
+				duration: 1.3,
+				stagger: 0.06,
+				ease: 'expo.out',
+				scrollTrigger: {
+					trigger: paragraph,
+					start: 'top 70%'
+				}
+			})
+		})
+
+	}, {scope: mainContainerRef});
+
 	return (
-		<div id='lead-content'>
+		<div ref={mainContainerRef} id='lead-content'>
 
 			<div>
 				<div ref={container1Ref} className='flex w-max'>
@@ -158,7 +180,9 @@ const LeadContent = () => {
 			</div>
 			
 			<div className='section-container my-30 desktop:my-50'>
-				<div className='flex flex-col gap-18 desktop:gap-25'>
+				<div className='flex flex-col gap-18 desktop:gap-25 relative'>
+					<img data-land src="/images/lead-land-1.svg" alt="Land" className='absolute hidden! md:block! md:-right-200'/>
+					<img data-land src="/images/lead-land-2.svg" alt="Land" className='absolute hidden! md:block! md:-left-250'/>
 					<p className='typo max-w-140'>
 						Togo ran through the night, following Sepp's trail all the way to the roadhouse at Solomon, and rested quietly outside for the remainder of the night. The next morning, Sepp noticed that his team was off to a rather quick start. He assumed they had caught the scent of a reindeer ahead on the trail.
 					</p>
