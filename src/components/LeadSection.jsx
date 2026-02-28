@@ -10,7 +10,8 @@ const LeadSection = () => {
 			<div className='h-dvh'></div>
 			{/*<LeadHeader/>*/}
 			{/*<LeadView/>*/}
-			<LeadContent/>
+			{/*<LeadContent/>*/}
+			<LeadFooter/>
 			<div className='h-dvh'></div>
 
 		</section>
@@ -200,6 +201,31 @@ const LeadContent = () => {
 					<div ref={text2Ref} className='marquee'>
 						Togo wanted all along was to be a member of Sepp's team
 					</div>
+				</div>
+			</div>
+		</div>
+	)
+}
+
+const LeadFooter = () => {
+	return (
+		<div id='lead-footer'>
+			<div className="section-container">
+				<div className='flex flex-col md:flex-row gap-10 justify-between items-center'>
+					<div className="max-w-150 flex flex-col gap-8 desktop:gap-10 quote-block">
+						<div>
+							<img src="/images/quote.svg" alt="Quote" className='w-[20%]'/>
+						</div>
+						<h3 className='md:max-w-[84%] max-w-full'>
+							I had found a natural-born leader, something I had tried for years to breed
+						</h3>
+						<p className="quote">
+							—  Leonhard Seppala
+						</p>
+					</div>
+					<p className='typo md:max-w-[45%] max-w-[clamp(90%,6vw,100%)] md:pt-18'>
+						Throughout the day, Sepp kept moving Togo up the line until, at the end of the day, he was sharing the lead position with the lead dog. Togo had logged seventy-five miles on his first day in harness, which was unheard of for an inexperienced young sled dog, especially a puppy. Seppala called him an "infant prodigy".
+					</p>
 				</div>
 			</div>
 		</div>
