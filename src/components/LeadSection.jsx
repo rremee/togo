@@ -7,13 +7,10 @@ import {useMarqueeText} from "../hooks/useMarqueeText.jsx";
 const LeadSection = () => {
 	return (
 		<section id="born-to-lead">
-			<div className='h-dvh'></div>
-			{/*<LeadHeader/>*/}
-			{/*<LeadView/>*/}
-			{/*<LeadContent/>*/}
+			<LeadHeader/>
+			<LeadView/>
+			<LeadContent/>
 			<LeadFooter/>
-			<div className='h-dvh'></div>
-
 		</section>
 	);
 };
@@ -170,7 +167,7 @@ const LeadContent = () => {
 	}, {scope: mainContainerRef});
 
 	return (
-		<div ref={mainContainerRef} id='lead-content'>
+		<div ref={mainContainerRef} id='lead-content' className='section-margin'>
 
 			<div>
 				<div ref={container1Ref} className='flex w-max'>
@@ -208,8 +205,53 @@ const LeadContent = () => {
 }
 
 const LeadFooter = () => {
+
+	const containerRef = useRef(null);
+
+	useGSAP(() => {
+		const paragraph = SplitText.create('.typo', {type: 'lines'});
+		gsap.from(paragraph.lines, {
+			opacity: 0,
+			y: 10,
+			duration: 1,
+			stagger: 0.06,
+			ease: 'power3.out',
+			scrollTrigger: {
+				trigger: containerRef.current,
+				start: 'top 80%'
+			}
+		})
+
+		const header = containerRef.current.querySelector('.quote-block h3');
+		const splitQuoteHeading = SplitText.create(header, {type: 'words'})
+		const quoteTl = gsap.timeline({
+			scrollTrigger: {
+				trigger: '.quote-block',
+				start: 'top 90%',
+			}
+		});
+
+		quoteTl
+			.from('.quote-block img', {
+				scale: 0,
+				opacity: 0,
+				duration: 0.8
+			})
+			.from(splitQuoteHeading.words, {
+				yPercent: -10,
+				duration: 1.5,
+				opacity: 0,
+				stagger: 0.058
+			}, '-=0.3')
+			.from('.quote-block .quote', {
+				opacity: 0,
+				duration: 0.8
+			}, '-=1');
+
+	}, {scope: containerRef});
+
 	return (
-		<div id='lead-footer'>
+		<div ref={containerRef} id='lead-footer' className='section-margin'>
 			<div className="section-container">
 				<div className='flex flex-col md:flex-row gap-10 justify-between items-center'>
 					<div className="max-w-150 flex flex-col gap-8 desktop:gap-10 quote-block">
