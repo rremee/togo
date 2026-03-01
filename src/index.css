@@ -26,6 +26,7 @@
     --color-light: #EEE7E7;
     --color-dark: #141414;
     --color-gray: #D2D2D2;
+    --color-light-theme: #C9C9C9;
     --gradient: linear-gradient(263deg, rgba(104, 60, 18, 0.21) 0%, rgba(62, 30, 0, 0.21) 100%);
     --breakpoint-desktop: 1254px;
 }
@@ -60,6 +61,11 @@ img {
 
     .section-margin {
         @apply mt-87;
+    }
+
+    .theme-light {
+        background: var(--color-light-theme);
+        color: var(--color-dark);
     }
 
     #header {

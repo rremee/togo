@@ -27,7 +27,7 @@ const HeadingScrollHorizontal = ({header}) => {
 
 	return (
 		<div ref={containerRef} className="header-item">
-			<h2>
+			<h2  className='text-nowrap'>
 				{header}
 			</h2>
 		</div>
