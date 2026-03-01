@@ -7,6 +7,7 @@ import {infoScrollingParagraphs} from "./constants/index.jsx";
 import HeadingScrollHorizontal from "./components/HeadingScrollHorizontal.jsx";
 import BackgroundView from "./components/BackgroundView.jsx";
 import LeadSection from "./components/LeadSection.jsx";
+import Mountains from "./components/Mountains.jsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -20,7 +21,8 @@ function App() {
           {/*<InfoScrolling text={infoScrollingParagraphs}/>*/}
           {/*<HeadingScrollHorizontal header='Background'/>*/}
           {/*<BackgroundView/>*/}
-          <LeadSection/>
+          {/*<LeadSection/>*/}
+          <Mountains/>
       </main>
     </div>
   )
