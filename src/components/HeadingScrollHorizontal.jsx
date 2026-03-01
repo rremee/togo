@@ -1,33 +1,39 @@
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
-import {ScrollTrigger} from "gsap/all";
 import {useRef} from "react";
 
 const HeadingScrollHorizontal = ({header}) => {
 
 	const containerRef = useRef(null);
+	const headingRef = useRef(null);
 
 	useGSAP(() => {
 		const timeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: containerRef.current,
 				start: 'top top',
-				end: '+=2300',
+				end: '+=2800',
 				scrub: 1.5,
 				pin: true,
 				invalidateOnRefresh: true
 			}
 		})
 
-		timeline.fromTo(containerRef.current.querySelector('h2'),
-			{ x: () => window.innerWidth},
-			{ x: () => -window.innerWidth , ease: 'none'})
+		gsap.set(headingRef.current, { autoAlpha: 1 });
 
-	}, [header])
+		timeline.to({}, {duration: 0.1})
+
+		timeline.fromTo(headingRef.current,
+			{ x: () => window.innerWidth},
+			{ x: () => -(headingRef.current.offsetWidth) , ease: 'none'})
+
+		timeline.to({}, {duration: 0.1})
+
+	}, {dependencies: [header], scope: containerRef});
 
 	return (
 		<div ref={containerRef} className="header-item">
-			<h2  className='text-nowrap'>
+			<h2 ref={headingRef} className='text-nowrap will-change-transform invisible-on-load'>
 				{header}
 			</h2>
 		</div>

@@ -127,7 +127,7 @@ img {
     }
 
     .header-item {
-        @apply h-dvh flex items-center justify-center;
+        @apply h-dvh flex items-center justify-start overflow-hidden w-full;
     }
 
     .puppy-background {
@@ -149,5 +149,9 @@ img {
     .mountain-decor {
         @apply absolute left-0 bottom-0 object-cover z-2 min-w-full pointer-events-none;
         will-change: transform;
+    }
+
+    .invisible-on-load {
+        @apply invisible opacity-0;
     }
 }

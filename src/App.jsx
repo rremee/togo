@@ -23,7 +23,7 @@ function App() {
           {/*<BackgroundView/>*/}
           {/*<LeadSection/>*/}
           <Mountains/>
-          <section id='great-race' className='theme-light'>
+          <section id='great-race' className='theme-light relative z-10'>
               <HeadingScrollHorizontal header='Great Race of Mercy'/>
           </section>
       </main>
