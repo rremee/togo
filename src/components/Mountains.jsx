@@ -28,7 +28,7 @@ const Mountains = () => {
 
 	return (
 
-		<div ref={containerRef} id='mountains' className='relative w-full h-dvh section-margin'>
+		<div ref={containerRef} id='mountains' className='relative w-full z-2 h-dvh section-margin'>
 			<img data-speed='30' src="/images/mountains/mountains-back.svg" alt="Mountains" className='mountain-decor'/>
 			<img data-speed='40' src="/images/mountains/mountains-mid-back.svg" alt="Mountains" className='mountain-decor'/>
 			<img data-speed='50' src="/images/mountains/mountains-mid-front.svg" alt="Mountains" className='mountain-decor'/>
