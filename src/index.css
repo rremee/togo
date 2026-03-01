@@ -141,7 +141,7 @@ img {
     }
 
     .mountain-decor {
-        @apply absolute bottom-0 left-0 object-cover z-2 w-full grayscale;
+        @apply absolute left-0 bottom-0 object-cover z-2 min-w-full pointer-events-none;
+        will-change: transform;
     }
-
 }
