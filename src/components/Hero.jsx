@@ -9,6 +9,18 @@ const Hero = () => {
 		const splitSubTitle = SplitText.create('#hero h3', {type: 'chars, words'})
 		const splitParagraph = SplitText.create('#hero p', {type: 'lines'})
 
+		gsap.to('.bg-image',{
+			scrollTrigger: {
+				trigger: "#hero",
+				scrub: 1,
+				start: "top top",
+				end: "bottom top"
+			},
+			yPercent: -20,
+			scale: 1.3,
+			ease: "none"
+		});
+
 
 		gsap.from(splitTitle.chars, {
 			yPercent: 40,
@@ -39,6 +51,9 @@ const Hero = () => {
 
 	return (
 		<section id="hero">
+			<div className='bg-image' style={{backgroundImage: `var(--gradient),
+                    url("/images/home-img.jpg")`}}>
+			</div>
 			<div className="section-container">
 				<div className='flex flex-col gap-[clamp(10px,5vw,26px)] text-center items-center'>
 					<h3>The untold story of</h3>

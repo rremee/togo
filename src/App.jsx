@@ -16,12 +16,12 @@ function App() {
   return (
     <div className='wrapper'>
       <main>
-          {/*<Header/>*/}
-          {/*<Hero/>*/}
-          {/*<InfoScrolling text={infoScrollingParagraphs}/>*/}
-          {/*<HeadingScrollHorizontal header='Background'/>*/}
-          {/*<BackgroundView/>*/}
-          {/*<LeadSection/>*/}
+          <Header/>
+          <Hero/>
+          <InfoScrolling text={infoScrollingParagraphs}/>
+          <HeadingScrollHorizontal header='Background'/>
+          <BackgroundView/>
+          <LeadSection/>
           <Mountains/>
           <section id='great-race' className='theme-light relative z-1'>
               <HeadingScrollHorizontal header='Great Race of Mercy'/>

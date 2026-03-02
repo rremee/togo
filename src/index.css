@@ -77,9 +77,10 @@ img {
     }
 
     #hero {
-        @apply h-dvh flex items-center justify-center pt-26;
-        background: var(--gradient),
-                    url("/images/home-img.jpg") center / cover no-repeat;
+        @apply h-dvh flex items-center justify-center relative overflow-hidden;
+        .bg-image {
+            @apply absolute top-0 left-0 w-full h-full object-cover bg-no-repeat bg-cover bg-center will-change-transform;
+        }
 
         h1 {
             @apply uppercase font-black text-[clamp(80px,16vw,320px)] leading-[0.94] tracking-[0.14em];

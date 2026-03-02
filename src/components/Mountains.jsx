@@ -14,7 +14,7 @@ const Mountains = () => {
 
 			gsap.to(layer,{
 				yPercent: speed,
-				ease: 'none',
+				ease: 'power1.inOut',
 				scrollTrigger: {
 					trigger: containerRef.current,
 					start: 'top bottom',
