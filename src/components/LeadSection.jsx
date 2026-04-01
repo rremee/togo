@@ -1,8 +1,9 @@
 import {useGSAP} from "@gsap/react";
-import {useRef} from "react";
+import {useMemo, useRef} from "react";
 import gsap from "gsap";
 import {SplitText} from 'gsap/all';
 import {useMarqueeText} from "../hooks/useMarqueeText.jsx";
+import {useSplitText} from "../hooks/useSplitText.jsx";
 
 const LeadSection = () => {
 	return (
@@ -19,30 +20,15 @@ const LeadHeader = () => {
 
 	const containerRef = useRef(null);
 
-	useGSAP(() => {
+	const splitTargets = useMemo(() => [
+		{ selector: 'p', type: 'words' },
+		{ selector: 'h2', type: 'words' },
+		{ selector: 'h3', type: 'lines' }
+	], [])
 
-		const splitTextAnimation = (
-				selector,
-				type = 'words',
-				stagger = 0.04,
-				duration = 2) => {
-			const splitText = SplitText.create(selector, {type: type});
-			const splitTextType = type === 'lines' ? splitText.lines : splitText.words;
-			gsap.from(splitTextType, {
-				scrollTrigger: {
-					trigger: selector,
-					start: 'top 60%',
-				},
-				y: -10,
-				opacity: 0,
-				duration: duration,
-				ease: 'expo.out',
-				stagger: stagger
-			})
-		}
-		splitTextAnimation('#lead-header p');
-		splitTextAnimation('#lead-header h2', 'words', 0.1, 4);
-		splitTextAnimation('#lead-header h3', 'lines', 0.08);
+	useSplitText(containerRef, splitTargets);
+
+	useGSAP(() => {
 
 		gsap.fromTo('.arrow',
 			{
@@ -86,20 +72,13 @@ const LeadView = () => {
 	const containerRef = useRef(null);
 	const imageRef = useRef(null);
 
-	useGSAP(() => {
-		const splitText = SplitText.create('.typo', {type: 'lines'});
+	const splitParagraphs = useMemo(() => [
+		{ selector: '.typo', type: 'lines' }
+	], []);
 
-		gsap.from(splitText.lines,  {
-			scrollTrigger: {
-				trigger: containerRef.current,
-				start: 'top 60%'
-			},
-			y: 40,
-			opacity: 0,
-			duration: 1,
-			ease: 'expo.out',
-			stagger: 0.05,
-		})
+	useSplitText(containerRef, splitParagraphs);
+
+	useGSAP(() => {
 
 		gsap.from(imageRef.current, {
 			opacity: 0,
@@ -146,25 +125,11 @@ const LeadContent = () => {
 	useMarqueeText(container1Ref, text1Ref);
 	useMarqueeText(container2Ref, text2Ref);
 
-	useGSAP(() => {
+	const splitText = useMemo(() => [
+		{selector: 'p', type: 'lines'},
+	], [])
 
-		const paragraphs = mainContainerRef.current.querySelectorAll('p');
-		paragraphs.forEach(paragraph => {
-			const split = SplitText.create(paragraph, {type: 'lines'});
-			gsap.from(split.lines, {
-				opacity: 0,
-				y: -10,
-				duration: 1.3,
-				stagger: 0.06,
-				ease: 'expo.out',
-				scrollTrigger: {
-					trigger: paragraph,
-					start: 'top 70%'
-				}
-			})
-		})
-
-	}, {scope: mainContainerRef});
+	useSplitText(mainContainerRef, splitText);
 
 	return (
 		<div ref={mainContainerRef} id='lead-content' className='section-margin'>
