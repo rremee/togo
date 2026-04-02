@@ -1,9 +1,9 @@
 import {useGSAP} from "@gsap/react";
 import {useMemo, useRef} from "react";
 import gsap from "gsap";
-import {SplitText} from 'gsap/all';
 import {useMarqueeText} from "../hooks/useMarqueeText.jsx";
 import {useSplitText} from "../hooks/useSplitText.jsx";
+import QuoteBlock from "./QuoteBlock.jsx";
 
 const LeadSection = () => {
 	return (
@@ -173,64 +173,18 @@ const LeadFooter = () => {
 
 	const containerRef = useRef(null);
 
-	useGSAP(() => {
-		const paragraph = SplitText.create('.typo', {type: 'lines'});
-		gsap.from(paragraph.lines, {
-			opacity: 0,
-			y: 10,
-			duration: 1,
-			stagger: 0.06,
-			ease: 'power3.out',
-			scrollTrigger: {
-				trigger: containerRef.current,
-				start: 'top 80%'
-			}
-		})
+	const splitParagraph = useMemo(() => [
+		{ selector: '.typo', type: 'lines' }
+	], []);
 
-		const header = containerRef.current.querySelector('.quote-block h3');
-		const splitQuoteHeading = SplitText.create(header, {type: 'words'})
-		const quoteTl = gsap.timeline({
-			scrollTrigger: {
-				trigger: '.quote-block',
-				start: 'top 90%',
-			}
-		});
-
-		quoteTl
-			.from('.quote-block img', {
-				scale: 0,
-				opacity: 0,
-				duration: 0.8
-			})
-			.from(splitQuoteHeading.words, {
-				yPercent: -10,
-				duration: 1.5,
-				opacity: 0,
-				stagger: 0.058
-			}, '-=0.3')
-			.from('.quote-block .quote', {
-				opacity: 0,
-				duration: 0.8
-			}, '-=1');
-
-	}, {scope: containerRef});
+	useSplitText(containerRef, splitParagraph);
 
 	return (
 		<div ref={containerRef} id='lead-footer' className='section-margin'>
 			<div className="section-container">
-				<div className='flex flex-col md:flex-row gap-10 justify-between items-center'>
-					<div className="max-w-150 flex flex-col gap-8 desktop:gap-10 quote-block">
-						<div>
-							<img src="/images/quote.svg" alt="Quote" className='w-[20%]'/>
-						</div>
-						<h3 className='md:max-w-[84%] max-w-full'>
-							I had found a natural-born leader, something I had tried for years to breed
-						</h3>
-						<p className="quote">
-							—  Leonhard Seppala
-						</p>
-					</div>
-					<p className='typo md:max-w-[45%] max-w-[clamp(90%,6vw,100%)] md:pt-18'>
+				<div className='flex flex-col desktop:flex-row gap-10 justify-between items-center'>
+					<QuoteBlock quote={'I had found a natural-born leader, something I had tried for years to breed'} author={'Leonhard Seppala'}/>
+					<p className='typo sm:max-w-[65%] max-w-60% w-full md:pt-18'>
 						Throughout the day, Sepp kept moving Togo up the line until, at the end of the day, he was sharing the lead position with the lead dog. Togo had logged seventy-five miles on his first day in harness, which was unheard of for an inexperienced young sled dog, especially a puppy. Seppala called him an "infant prodigy".
 					</p>
 				</div>

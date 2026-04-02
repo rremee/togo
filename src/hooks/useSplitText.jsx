@@ -61,7 +61,10 @@ export const useSplitText = (containerRef, targets = []) => {
 		};
 
 		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+			splitInstances.forEach(s => s.revert());
+		};
 
 	}, { scope: containerRef, dependencies: [targets] });
 };
