@@ -4,6 +4,7 @@ import gsap from "gsap";
 import {useMarqueeText} from "../hooks/useMarqueeText.jsx";
 import {useSplitText} from "../hooks/useSplitText.jsx";
 import QuoteBlock from "./QuoteBlock.jsx";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const LeadSection = () => {
 	return (
@@ -20,6 +21,19 @@ const LeadHeader = () => {
 
 	const containerRef = useRef(null);
 
+	const arrowSVG = `
+	  <svg 
+		    viewBox="0 0 290 36" 
+		    fill="none" xmlns="http://www.w3.org/2000/svg" 
+		    class="md:w-62 w-42 h-auto absolute right-0 desktop:top-14 top-10 arrow">
+	    <path
+			d="M9.00098 27C66.3608 19.8014 123.362 12.3605 181.178 10.2308C214.436 9.00567 247.727 9 281.001 9"
+			stroke="#BB421B"
+			stroke-width="18"
+			stroke-linecap="round" />
+	  </svg>
+	`;
+
 	const splitTargets = useMemo(() => [
 		{ selector: 'p', type: 'words' },
 		{ selector: 'h2', type: 'words' },
@@ -30,21 +44,28 @@ const LeadHeader = () => {
 
 	useGSAP(() => {
 
-		gsap.fromTo('.arrow',
-			{
-				strokeDasharray: '1000',
-				strokeDashoffset: '1000',
-			},
-			{
-				strokeDashoffset: '0',
-				duration: 10,
-				ease: 'power2.out',
-				scrollTrigger: {
-					trigger: '.arrow',
-					start: 'top 80%',
+		ScrollTrigger.create({
+			trigger: 'h3',
+			start: 'top 60%',
+			onEnter: () => {
+				const arrowPath = containerRef.current.querySelector('.arrow');
+
+				if (arrowPath) {
+					gsap.fromTo('.arrow',
+						{
+							strokeDasharray: '1000',
+							strokeDashoffset: '1000',
+						},
+						{
+							strokeDashoffset: '0',
+							duration: 10,
+							delay: .7,
+							ease: 'power2.out',
+						}
+					);
 				}
 			}
-		);
+		})
 
 	}, {scope: containerRef});
 
@@ -59,7 +80,11 @@ const LeadHeader = () => {
 						BORN <br/> TO LEAD
 					</h2>
 					<h3 className='md:max-w-[90%] md:mt-16 mt-10'>
-						He was about eight months old when he finally got the chance to show his quality as a sled dog and a potential lead dog. Sepp had to rush out with a team to a mining camp outside of Nome. A prospector had hired Sepp to take him up to Dime Creek, where there was word of a new gold strike. It was <span className='relative'>160 miles away <ArrowSVG className='absolute right-0 desktop:top-14 top-10 arrow'/></span>.
+						He was about eight months old when he finally got the chance to show his quality as a sled dog and a potential lead dog. Sepp had to rush out with a team to a mining camp outside of Nome. A prospector had hired Sepp to take him up to Dime Creek, where there was word of a new gold strike... <br/>  It was{' '}
+						<span
+							className='relative'
+							dangerouslySetInnerHTML={{ __html: `160 miles away ${arrowSVG}` }}
+						/>
 					</h3>
 				</div>
 			</div>
@@ -193,19 +218,4 @@ const LeadFooter = () => {
 	)
 }
 
-const ArrowSVG = ({className}) => {
-	return (
-		<svg
-			viewBox="0 0 290 36"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-			className={`md:w-62 w-42 h-auto ${className || ''}`}>
-			<path
-				d="M9.00098 27C66.3608 19.8014 123.362 12.3605 181.178 10.2308C214.436 9.00567 247.727 9 281.001 9"
-				stroke="#BB421B"
-				strokeWidth="18"
-				strokeLinecap="round" />
-		</svg>
-	)
-}
 export default LeadSection;
