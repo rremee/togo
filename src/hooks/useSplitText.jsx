@@ -12,42 +12,47 @@ export const useSplitText = (containerRef, targets = []) => {
 		let lastWidth = window.innerWidth;
 
 		const setupSplitText = () => {
-			splitInstances.forEach(s => s.revert());
-			splitInstances = [];
+			const initSplit = () => {
+				splitInstances.forEach(s => s.revert());
+				splitInstances = [];
 
-			targets.forEach(({ selector, type }) => {
-				const elements = containerRef.current.querySelectorAll(selector);
+				targets.forEach(({ selector, type }) => {
+					const elements = containerRef.current.querySelectorAll(selector);
 
-				elements.forEach(el => {
+					elements.forEach(el => {
 
-					const isAnimated = el.classList.contains('animated');
+						const isAnimated = el.classList.contains('animated');
 
-					const split = new SplitText(el, { type: type || 'lines, words, chars' });
-					splitInstances.push(split);
+						const split = new SplitText(el, { type: type || 'lines, words, chars' });
+						splitInstances.push(split);
 
-					if (!isAnimated) {
-						const items = type.includes('lines')
-							? split.lines
-							: (type.includes('words') ? split.words : split.chars);
+						if (!isAnimated) {
+							const items = type.includes('lines')
+								? split.lines
+								: (type.includes('words') ? split.words : split.chars);
 
-						gsap.from(items, {
-							scrollTrigger: {
-								trigger: el,
-								start: 'top 60%',
-								onEnter: () => el.classList.add('animated')
-							},
-							y: 30,
-							opacity: 0,
-							duration: 1.5,
-							stagger: type.includes('lines') ? 0.08 : (type.includes('words') ? 0.05 : 0.01),
-							ease: 'expo.out',
-						});
-					}
+							gsap.from(items, {
+								scrollTrigger: {
+									trigger: el,
+									start: 'top 60%',
+									onEnter: () => el.classList.add('animated')
+								},
+								y: 30,
+								opacity: 0,
+								duration: 1.5,
+								stagger: type.includes('lines') ? 0.08 : (type.includes('words') ? 0.05 : 0.01),
+								ease: 'expo.out',
+							});
+						}
+					});
 				});
-			});
+			}
+			if (document.fonts?.ready) {
+				document.fonts.ready.then(initSplit);
+			} else {
+				initSplit();
+			}
 		};
-
-		setupSplitText();
 
 		const handleResize = () => {
 
@@ -60,7 +65,11 @@ export const useSplitText = (containerRef, targets = []) => {
 			ScrollTrigger.refresh();
 		};
 
-		window.addEventListener('resize', handleResize);
+		document.fonts?.ready.then(() => {
+			setupSplitText();
+			window.addEventListener('resize', handleResize);
+		})
+
 		return () => {
 			window.removeEventListener('resize', handleResize);
 			splitInstances.forEach(s => s.revert());
