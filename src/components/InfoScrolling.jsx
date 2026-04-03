@@ -14,7 +14,7 @@ const InfoScrolling = ({text}) => {
 			scrollTrigger: {
 				trigger: container,
 				start: 'top top',
-				end: `+=${items.length * 150}%`,
+				end: `+=${items.length * 200}%`,
 				scrub: 1,
 				pin: true
 			}
@@ -22,16 +22,29 @@ const InfoScrolling = ({text}) => {
 
 		items.forEach((item, i) => {
 
-			const offset = i === 0 ? '+=0.7' : '+=0.2'
+			const offset = i === 0 ? '+=1.0' : '+=1.5'
 
 			timeline
 				.fromTo(item,
-					{opacity: 0, y: 50},
-					{opacity: 1, y: 0, duration: 1, ease: 'power1.out'}, offset)
-				.to(item, {opacity: 0, y: -50, duration: 1, ease: 'power1.out'}, '+=1')
+					{
+						opacity: 0,
+						y: 50
+					},
+					{
+						opacity: 1,
+						y: 0,
+						duration: 1.5,
+						ease: 'power1.out'},
+					offset)
+				.to(item, {
+					opacity: 0,
+					y: -50,
+					duration: 1.5,
+					ease: 'power1.out'},
+					'+=1')
 		})
 
-	}, [text])
+	},  {scope: containerRef, dependencies: [text]})
 
 	return (
 		<div>

@@ -20,7 +20,7 @@ function App() {
           {/*<div className='h-dvh'></div>*/}
 
           <Hero/>
-          {/*<InfoScrolling text={infoScrollingParagraphs}/>*/}
+          <InfoScrolling text={infoScrollingParagraphs}/>
           {/*<HeadingScrollHorizontal header='Background'/>*/}
           <BackgroundView/>
 
