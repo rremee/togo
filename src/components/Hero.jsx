@@ -1,16 +1,59 @@
 import {useGSAP} from "@gsap/react";
-import {useRef} from "react";
+import {useRef, useMemo} from "react";
 import gsap from "gsap";
-import {SplitText} from "gsap/all";
+import {useSplitText} from "../hooks/useSplitText.jsx";
 
 const Hero = () => {
 
 	const heroRef = useRef(null);
 
+	const splitText = useMemo(() => [
+		{
+			selector: 'h1',
+			type: 'chars, words',
+			customAnimation: (split) => {
+				gsap.from(split.chars, {
+					y: 40,
+					duration: 2,
+					ease: 'expo.out',
+					stagger: 0.05,
+					opacity: 0
+				})
+			}
+		},
+		{
+			selector: 'h3',
+			type: 'chars, words',
+			customAnimation: (split) => {
+				gsap.from(split.words, {
+					y: 30,
+					duration: 1.5,
+					ease: 'expo.out',
+					stagger: 0.08,
+					opacity: 0,
+					delay: .8
+				})
+			}
+		},
+		{
+			selector: 'p',
+			type: 'lines',
+			customAnimation: (split) => {
+				gsap.from(split.lines, {
+					y: 30,
+					duration: 1.5,
+					ease: 'expo.out',
+					stagger: 0.11,
+					opacity: 0,
+					delay: 1.2
+				})
+			}
+		}
+	], [])
+
+	useSplitText(heroRef, splitText);
+
 	useGSAP(() => {
-		const splitTitle = SplitText.create('#hero h1', {type: 'chars, words'})
-		const splitSubTitle = SplitText.create('#hero h3', {type: 'chars, words'})
-		const splitParagraph = SplitText.create('#hero p', {type: 'lines'})
 
 		gsap.to('.bg-image-parallax',{
 			scrollTrigger: {
@@ -24,32 +67,6 @@ const Hero = () => {
 			ease: "none"
 		});
 
-
-		gsap.from(splitTitle.chars, {
-			yPercent: 40,
-			duration: 1.5,
-			ease: 'expo.Out',
-			stagger: 0.04,
-			opacity: 0
-		})
-
-		gsap.from(splitSubTitle.words, {
-			yPercent: -20,
-			duration: 1.5,
-			ease: 'expo.Out',
-			stagger: 0.06,
-			opacity: 0,
-			delay: .8
-		})
-
-		gsap.from(splitParagraph.lines, {
-			yPercent: 20,
-			duration: 1,
-			ease: 'expo.Out',
-			stagger: 0.11,
-			opacity: 0,
-			delay: 1.2
-		})
 	}, {scope: heroRef})
 
 	return (

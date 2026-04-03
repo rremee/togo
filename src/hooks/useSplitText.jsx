@@ -4,75 +4,85 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 export const useSplitText = (containerRef, targets = []) => {
+
 	useGSAP(() => {
-		if (!containerRef.current || !targets.length) return;
-
 		let splitInstances = [];
-
 		let lastWidth = window.innerWidth;
 
-		const setupSplitText = () => {
-			const initSplit = () => {
-				splitInstances.forEach(s => s.revert());
-				splitInstances = [];
+		const initSplit = (isResize = false) => {
+			splitInstances.forEach(s => {
+				s.elements?.forEach(el => {
+					ScrollTrigger.getAll()
+						.filter(st => st.trigger === el)
+						.forEach(st => st.kill());
+				});
+				s.revert();
+			});
+			splitInstances = [];
 
-				targets.forEach(({ selector, type }) => {
-					const elements = containerRef.current.querySelectorAll(selector);
+			targets.forEach(({ selector, type, customAnimation }) => {
+				const elements = containerRef.current.querySelectorAll(selector);
 
-					elements.forEach(el => {
+				elements.forEach(el => {
+					const split = new SplitText(el, { type: type || 'lines, words, chars' });
+					splitInstances.push(split);
 
-						const isAnimated = el.classList.contains('animated');
-
-						const split = new SplitText(el, { type: type || 'lines, words, chars' });
-						splitInstances.push(split);
-
-						if (!isAnimated) {
+					if (!isResize) {
+						if (customAnimation) {
+							customAnimation(split, el);
+						} else {
 							const items = type.includes('lines')
 								? split.lines
-								: (type.includes('words') ? split.words : split.chars);
+								: type.includes('words')
+									? split.words
+									: split.chars;
 
 							gsap.from(items, {
 								scrollTrigger: {
 									trigger: el,
 									start: 'top 60%',
-									onEnter: () => el.classList.add('animated')
 								},
 								y: 30,
 								opacity: 0,
 								duration: 1.5,
-								stagger: type.includes('lines') ? 0.08 : (type.includes('words') ? 0.05 : 0.01),
+								stagger: type.includes('lines') ? 0.08 : type.includes('words') ? 0.05 : 0.01,
 								ease: 'expo.out',
 							});
 						}
-					});
+					}
 				});
-			}
+			});
+		};
+
+		const setupSplitText = (isResize = false) => {
 			if (document.fonts?.ready) {
-				document.fonts.ready.then(initSplit);
+				document.fonts.ready.then(() => initSplit(isResize));
 			} else {
-				initSplit();
+				initSplit(isResize);
 			}
 		};
 
 		const handleResize = () => {
-
 			const currentWidth = window.innerWidth;
 			if (currentWidth === lastWidth) return;
-
 			lastWidth = currentWidth;
-
-			setupSplitText();
+			setupSplitText(true);
 			ScrollTrigger.refresh();
 		};
 
-		document.fonts?.ready.then(() => {
-			setupSplitText();
-			window.addEventListener('resize', handleResize);
-		})
+		setupSplitText(false);
+		window.addEventListener('resize', handleResize);
 
 		return () => {
 			window.removeEventListener('resize', handleResize);
-			splitInstances.forEach(s => s.revert());
+			splitInstances.forEach(s => {
+				s.elements?.forEach(el => {
+					ScrollTrigger.getAll()
+						.filter(st => st.trigger === el)
+						.forEach(st => st.kill());
+				});
+				s.revert();
+			});
 		};
 
 	}, { scope: containerRef, dependencies: [targets] });
