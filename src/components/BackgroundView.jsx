@@ -1,7 +1,8 @@
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import {SplitText} from "gsap/all";
-import {useRef} from "react";
+import {useRef, useMemo} from "react";
+import {useSplitText} from "../hooks/useSplitText.jsx";
 
 const BackgroundView = () => {
 	return (
@@ -18,9 +19,13 @@ const BackgroundFirst = () => {
 	const containerRef = useRef(null);
 	const imageRef = useRef(null);
 
-	useGSAP(() => {
+	const splitText = useMemo(() => [
+		{selector: '.typo', type: 'lines'}
+	], []);
 
-		const paragraphs = Array.from(containerRef.current.querySelectorAll(".typo"));
+	useSplitText(containerRef, splitText);
+
+	useGSAP(() => {
 
 		gsap.from(imageRef.current, {
 			opacity: 0,
@@ -31,21 +36,6 @@ const BackgroundFirst = () => {
 				trigger: imageRef.current,
 				start: 'top 65%'
 			}
-		})
-
-		paragraphs.forEach(paragraph => {
-			const split = SplitText.create(paragraph, {type: 'lines'})
-			gsap.from(split.lines, {
-				y: 40,
-				opacity: 0,
-				duration: 1.5,
-				ease: 'expo.out',
-				stagger: 0.05,
-				scrollTrigger: {
-					trigger: paragraph,
-					start: 'top 85%'
-				}
-			})
 		})
 
 		const quoteHeader = containerRef.current.querySelector('.quote-block h3');
@@ -128,22 +118,11 @@ const BackgroundSecond = () => {
 
 	const containerRef = useRef(null);
 
-	useGSAP(() => {
-		const splitText = SplitText.create('.typo', {type: 'lines'});
+	const splitText = useMemo(() => [
+		{selector: '.typo', type: 'lines'},
+	], [])
 
-		gsap.from(splitText.lines,  {
-			scrollTrigger: {
-				trigger: containerRef.current,
-				start: 'top 60%'
-			},
-			y: 40,
-			opacity: 0,
-			duration: 1.5,
-			ease: 'expo.out',
-			stagger: 0.05,
-		})
-
-	}, {scope: containerRef})
+	useSplitText(containerRef, splitText);
 
 	return (
 		<div className='puppy-background section-margin'>
@@ -167,34 +146,14 @@ const BackgroundThird = () => {
 	const arrowRef = useRef(null);
 	const containerRef = useRef(null);
 
-	useGSAP(() => {
-		const splitHeader = SplitText.create('h3:first-of-type', { type: 'lines' });
-		gsap.from(splitHeader.lines, {
-			scrollTrigger: {
-				trigger: 'h3:first-of-type',
-				start: 'top 50%'
-			},
-			y: -10,
-			opacity: 0,
-			duration: 1.5,
-			stagger: 0.07
-		});
+	const splitText = useMemo(() => [
+		{selector: 'h3:first-of-type', type: 'lines'},
+		{selector: '.typo', type: 'lines'},
+	], [])
 
-		const paragraphs = Array.from(containerRef.current.querySelectorAll('.typo'));
-		paragraphs.forEach(p => {
-			const split = SplitText.create(p, {type: 'lines'});
-			gsap.from(split.lines, {
-				scrollTrigger: {
-					trigger: p,
-					start: 'top 60%'
-				},
-				y: -10,
-				opacity: 0,
-				duration: 3,
-				stagger: 0.06,
-				ease: 'expo.out'
-			})
-		})
+	useSplitText(containerRef, splitText);
+
+	useGSAP(() => {
 
 		gsap.from('.sun-icon', {
 			opacity: 0,

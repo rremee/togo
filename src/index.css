@@ -83,7 +83,7 @@ img {
         }
 
         h1 {
-            @apply uppercase font-black text-[clamp(80px,16vw,320px)] leading-[0.94] tracking-[0.14em];
+            @apply uppercase font-black text-[clamp(70px,16vw,320px)] leading-[0.94] tracking-[0.14em];
         }
 
         h3 {
