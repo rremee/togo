@@ -17,14 +17,14 @@ function App() {
     <div className='wrapper'>
       <main>
           {/*<Header/>*/}
-          <div className='h-dvh'></div>
+          {/*<div className='h-dvh'></div>*/}
 
-          {/*<Hero/>*/}
+          <Hero/>
           {/*<InfoScrolling text={infoScrollingParagraphs}/>*/}
           {/*<HeadingScrollHorizontal header='Background'/>*/}
           <BackgroundView/>
 
-          <LeadSection/>
+          {/*<LeadSection/>*/}
           <div className='h-dvh'></div>
           {/*<Mountains/>*/}
           {/*<section id='great-race' className='theme-light relative z-1'>*/}

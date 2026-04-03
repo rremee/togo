@@ -91,10 +91,27 @@ const BackgroundSecond = () => {
 
 	useSplitText(containerRef, splitText);
 
+	useGSAP(() => {
+		gsap.to('.bg-image-parallax',{
+			scrollTrigger: {
+				trigger: containerRef.current,
+				scrub: 1,
+				start: "top top",
+				end: "bottom top"
+			},
+			yPercent: -20,
+			scale: 1.3,
+			ease: "none"
+		});
+	}, {scope: containerRef})
+
 	return (
-		<div className='puppy-background section-margin'>
+		<div ref={containerRef} id='puppy-background' className='section-margin relative overflow-hidden'>
+			<div className='bg-image-parallax' style={{backgroundImage: `var(--gradient),
+                    url("/images/background-2.png")`}}>
+			</div>
 			<div className="section-container">
-				<div ref={containerRef} className='space-y-20 max-w-115 justify-self-end'>
+				<div className='space-y-20 max-w-115 justify-self-end'>
 					<p className='typo'>
 						When he reached six months of age, Seppala decided he'd had enough of the puppy's mischief, and gave him away to a woman who was looking for a house pet. Togo, however, did not take to the domestic life of a pet, and even though the woman spoiled him, he because worse and worse.
 					</p>

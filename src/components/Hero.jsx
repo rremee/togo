@@ -1,17 +1,20 @@
 import {useGSAP} from "@gsap/react";
+import {useRef} from "react";
 import gsap from "gsap";
 import {SplitText} from "gsap/all";
 
 const Hero = () => {
+
+	const heroRef = useRef(null);
 
 	useGSAP(() => {
 		const splitTitle = SplitText.create('#hero h1', {type: 'chars, words'})
 		const splitSubTitle = SplitText.create('#hero h3', {type: 'chars, words'})
 		const splitParagraph = SplitText.create('#hero p', {type: 'lines'})
 
-		gsap.to('.bg-image',{
+		gsap.to('.bg-image-parallax',{
 			scrollTrigger: {
-				trigger: "#hero",
+				trigger: heroRef.current,
 				scrub: 1,
 				start: "top top",
 				end: "bottom top"
@@ -47,11 +50,11 @@ const Hero = () => {
 			opacity: 0,
 			delay: 1.2
 		})
-	})
+	}, {scope: heroRef})
 
 	return (
-		<section id="hero">
-			<div className='bg-image' style={{backgroundImage: `var(--gradient),
+		<section ref={heroRef} id="hero">
+			<div className='bg-image-parallax' style={{backgroundImage: `var(--gradient),
                     url("/images/home-img.jpg")`}}>
 			</div>
 			<div className="section-container">
