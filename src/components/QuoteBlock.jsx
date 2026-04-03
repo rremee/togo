@@ -3,7 +3,7 @@ import {useGSAP} from "@gsap/react";
 import {SplitText} from 'gsap/all';
 import {useRef} from "react";
 
-const QuoteBlock = ({quote, author}) => {
+const QuoteBlock = ({quote, author, className = "max-w-150", headingClassName = ""}) => {
 
 	const quoteRef = useRef(null);
 
@@ -17,34 +17,35 @@ const QuoteBlock = ({quote, author}) => {
 		});
 
 		const splitHeader = new SplitText(
-			quoteRef.current.querySelector('.quote-block h3'), {type: 'words'}
+			quoteRef.current.querySelector('h3'), {type: 'words'}
 		)
 
 		quoteTl
-			.from('.quote-block img', {
+			.from('img', {
 				scale: 0,
 				opacity: 0,
 				duration: 0.8
 			})
 			.from(splitHeader.words, {
 				y: 30,
-				duration: 1.5,
+				duration: 1,
 				opacity: 0,
 				stagger: 0.058
 			}, '-=0.3')
-			.from('.quote-block .quote', {
+			.from('.quote', {
 				opacity: 0,
-				duration: 0.8
-			}, '-=1');
+				duration: 1
+			}, '-=.4');
 	}, {scope: quoteRef})
 
 	return (
 		<>
-			<div ref={quoteRef} className="max-w-150 flex flex-col gap-8 desktop:gap-10 quote-block">
+			<div ref={quoteRef}
+			     className={`flex flex-col gap-8 desktop:gap-10 quote-block ${className}`}>
 				<div>
 					<img src="/images/quote.svg" alt="Quote" className='w-[20%]'/>
 				</div>
-				<h3 className='md:max-w-[84%] max-w-full'>
+				<h3 className={`${headingClassName}`}>
 					{quote}
 				</h3>
 				<p className="quote">

@@ -208,7 +208,11 @@ const LeadFooter = () => {
 		<div ref={containerRef} id='lead-footer' className='section-margin'>
 			<div className="section-container">
 				<div className='flex flex-col desktop:flex-row gap-10 justify-between items-center'>
-					<QuoteBlock quote={'I had found a natural-born leader, something I had tried for years to breed'} author={'Leonhard Seppala'}/>
+					<QuoteBlock
+						quote={'I had found a natural-born leader, something I had tried for years to breed'}
+						author={'Leonhard Seppala'}
+						headingClassName='md:max-w-[84%] max-w-full'
+					/>
 					<p className='typo sm:max-w-[65%] max-w-60% w-full md:pt-18'>
 						Throughout the day, Sepp kept moving Togo up the line until, at the end of the day, he was sharing the lead position with the lead dog. Togo had logged seventy-five miles on his first day in harness, which was unheard of for an inexperienced young sled dog, especially a puppy. Seppala called him an "infant prodigy".
 					</p>

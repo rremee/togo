@@ -1,8 +1,8 @@
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
-import {SplitText} from "gsap/all";
 import {useRef, useMemo} from "react";
 import {useSplitText} from "../hooks/useSplitText.jsx";
+import QuoteBlock from "./QuoteBlock.jsx";
 
 const BackgroundView = () => {
 	return (
@@ -38,32 +38,6 @@ const BackgroundFirst = () => {
 			}
 		})
 
-		const quoteHeader = containerRef.current.querySelector('.quote-block h3');
-		const splitQuoteHeading = SplitText.create(quoteHeader, {type: 'words'})
-		const quoteTl = gsap.timeline({
-			scrollTrigger: {
-				trigger: '.quote-block',
-				start: 'top 85%',
-			}
-		});
-
-		quoteTl
-			.from('.quote-block img', {
-				scale: 0,
-				opacity: 0,
-				duration: 0.8
-			})
-			.from(splitQuoteHeading.words, {
-				yPercent: -10,
-				duration: 1.5,
-				opacity: 0,
-				stagger: 0.058
-			}, '-=0.3')
-			.from('.quote-block .quote', {
-				opacity: 0,
-				duration: 0.8
-			}, '-=1');
-
 	}, {scope: containerRef})
 
 	return (
@@ -94,21 +68,14 @@ const BackgroundFirst = () => {
 							</p>
 						</div>
 
-						<div className="max-w-115 flex flex-col gap-8 desktop:gap-10 quote-block">
-							<div>
-								<img src="/images/quote.svg" alt="Quote" className='w-[20%]'/>
-							</div>
-							<h3>
-								Showing all the signs of becoming a canine delinquent
-							</h3>
-							<p className="quote">
-								— One reporter wrote about Togo
-							</p>
-						</div>
+						<QuoteBlock
+							className='max-w-115'
+							quote={'Showing all the signs of becoming a canine delinquent'}
+							author={' One reporter wrote about Togo'}
+						/>
 
 					</div>
 				</div>
-
 			</div>
 		</div>
 	);
@@ -180,32 +147,6 @@ const BackgroundThird = () => {
 			}
 		});
 
-		const quoteHeading = containerRef.current.querySelector('.quote-block h3');
-		const splitQuoteHeading = SplitText.create(quoteHeading, {type: 'words'})
-		const quoteTl = gsap.timeline({
-			scrollTrigger: {
-				trigger: '.quote-block',
-				start: 'top 85%',
-			}
-		});
-
-		quoteTl
-			.from('.quote-block img', {
-				scale: 0,
-				opacity: 0,
-				duration: 0.8
-			})
-			.from(splitQuoteHeading.words, {
-				yPercent: -10,
-				duration: 1.5,
-				opacity: 0,
-				stagger: 0.058
-			}, '-=0.3')
-			.from('.quote-block .quote', {
-				opacity: 0,
-				duration: 0.8
-			}, '-=1');
-
 	}, { scope: containerRef });
 
 	return (
@@ -225,17 +166,11 @@ const BackgroundThird = () => {
 						Togo never pestered another team again, always giving an approaching team a wide berth. When he would "pass by" another team going in the same direction, he would dig in, pull on the harness, yelp and rush on ahead.
 					</p>
 				</div>
-				<div className="mt-56 ml-auto max-w-124 flex flex-col gap-8 desktop:gap-10 quote-block">
-					<div>
-						<img src="/images/quote.svg" alt="Quote" className='w-[20%]'/>
-					</div>
-					<h3>
-						...like a lot of humans, Togo had learned the hard way
-					</h3>
-					<p className="quote">
-						—  Leonhard Seppala
-					</p>
-				</div>
+				<QuoteBlock
+					className='mt-56 ml-auto max-w-124'
+					quote={'...like a lot of humans, Togo had learned the hard way'}
+					author={'Leonhard Seppala'}
+				/>
 			</div>
 		</div>
 	);

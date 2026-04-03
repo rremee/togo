@@ -24,7 +24,7 @@ function App() {
           {/*<HeadingScrollHorizontal header='Background'/>*/}
           <BackgroundView/>
 
-          {/*<LeadSection/>*/}
+          <LeadSection/>
           <div className='h-dvh'></div>
           {/*<Mountains/>*/}
           {/*<section id='great-race' className='theme-light relative z-1'>*/}
