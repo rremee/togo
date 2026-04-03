@@ -107,7 +107,7 @@ const BackgroundSecond = () => {
 
 	return (
 		<div ref={containerRef} id='puppy-background' className='section-margin relative overflow-hidden'>
-			<div className='bg-image-parallax' style={{backgroundImage: `var(--gradient),
+			<div className='bg-image-parallax bg-left' style={{backgroundImage: `var(--gradient),
                     url("/images/background-2.png")`}}>
 			</div>
 			<div className="section-container">
