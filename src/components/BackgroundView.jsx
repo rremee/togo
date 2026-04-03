@@ -2,6 +2,7 @@ import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import {useRef, useMemo} from "react";
 import {useSplitText} from "../hooks/useSplitText.jsx";
+import useBackgroundParallax from "../hooks/useBackgroundParallax.jsx";
 import QuoteBlock from "./QuoteBlock.jsx";
 
 const BackgroundView = () => {
@@ -91,19 +92,7 @@ const BackgroundSecond = () => {
 
 	useSplitText(containerRef, splitText);
 
-	useGSAP(() => {
-		gsap.to('.bg-image-parallax',{
-			scrollTrigger: {
-				trigger: containerRef.current,
-				scrub: 1,
-				start: "top top",
-				end: "bottom top"
-			},
-			yPercent: -20,
-			scale: 1.3,
-			ease: "none"
-		});
-	}, {scope: containerRef})
+	useBackgroundParallax(containerRef);
 
 	return (
 		<div ref={containerRef} id='puppy-background' className='section-margin relative overflow-hidden'>

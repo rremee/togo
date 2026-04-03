@@ -1,7 +1,7 @@
-import {useGSAP} from "@gsap/react";
 import {useRef, useMemo} from "react";
 import gsap from "gsap";
 import {useSplitText} from "../hooks/useSplitText.jsx";
+import useBackgroundParallax from "../hooks/useBackgroundParallax.jsx";
 
 const Hero = () => {
 
@@ -53,21 +53,7 @@ const Hero = () => {
 
 	useSplitText(heroRef, splitText);
 
-	useGSAP(() => {
-
-		gsap.to('.bg-image-parallax',{
-			scrollTrigger: {
-				trigger: heroRef.current,
-				scrub: 1,
-				start: "top top",
-				end: "bottom top"
-			},
-			yPercent: -20,
-			scale: 1.3,
-			ease: "none"
-		});
-
-	}, {scope: heroRef})
+	useBackgroundParallax(heroRef);
 
 	return (
 		<section ref={heroRef} id="hero">
