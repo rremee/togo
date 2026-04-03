@@ -64,7 +64,7 @@ img {
     }
 
     .section-margin {
-        @apply mt-87;
+        @apply md:mt-87 mt-54;
     }
 
     .theme-light {

@@ -70,7 +70,7 @@ const LeadHeader = () => {
 	}, {scope: containerRef});
 
 	return (
-		<div id='lead-header'>
+		<div id='lead-header' className='section-margin'>
 			<div ref={containerRef} className="section-container">
 				<div>
 					<p className='uppercase text-[clamp(12px,5vw,14px)]'>
