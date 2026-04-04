@@ -9,9 +9,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 const LeadSection = () => {
 	return (
 		<section id="born-to-lead">
-			<LeadHeader/>
-			<LeadView/>
-			<LeadContent/>
+			{/*<LeadHeader/>*/}
+			{/*<LeadView/>*/}
+			{/*<LeadContent/>*/}
 			<LeadFooter/>
 		</section>
 	);
