@@ -3,11 +3,12 @@ import {ScrollTrigger, SplitText} from "gsap/all";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import InfoScrolling from "./components/InfoScrolling.jsx";
-import {infoScrollingParagraphs} from "./constants/index.jsx";
+import {infoScrollingParagraphsFirst} from "./constants/index.jsx";
 import HeadingScrollHorizontal from "./components/HeadingScrollHorizontal.jsx";
 import BackgroundView from "./components/BackgroundView.jsx";
 import LeadSection from "./components/LeadSection.jsx";
 import Mountains from "./components/Mountains.jsx";
+import IntroGreatRace from "./components/IntroGreatRace.jsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -18,13 +19,16 @@ function App() {
       <main>
           {/*<Header/>*/}
           {/*<Hero/>*/}
-          {/*<InfoScrolling text={infoScrollingParagraphs}/>*/}
+          {/*<InfoScrolling text={infoScrollingParagraphsFirst}/>*/}
           {/*<HeadingScrollHorizontal header='Background'/>*/}
           {/*<BackgroundView/>*/}
-          <LeadSection/>
-          <Mountains/>
+          {/*<LeadSection/>*/}
+          {/*<Mountains/>*/}
           <section id='great-race' className='theme-light relative z-1'>
-              <HeadingScrollHorizontal header='Great Race of Mercy'/>
+              {/*<HeadingScrollHorizontal header='Great Race of Mercy'/>*/}
+              <div className="h-dvh"></div>
+              <IntroGreatRace/>
+              <div className="h-dvh"></div>
           </section>
       </main>
     </div>
