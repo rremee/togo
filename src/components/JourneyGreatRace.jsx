@@ -1,11 +1,13 @@
 import {useGSAP} from "@gsap/react";
 import {useMemo, useRef} from "react";
 import gsap from "gsap";
+import {useSplitText} from "../hooks/useSplitText.jsx";
 
 const JourneyGreatRace = () => {
 	return (
 		<div id='journey-great-race'>
 			<JourneyTrain/>
+			<JourneyContent/>
 		</div>
 	);
 };
@@ -49,6 +51,46 @@ const JourneyTrain = () => {
 					className='min-w-full'
 				/>
 
+			</div>
+
+		</div>
+	)
+}
+
+const JourneyContent = () => {
+	const containerRef = useRef(null);
+	const arrowRef = useRef(null);
+
+	const splitText = useMemo(() => [
+		{selector: '.typo', type: 'lines'},
+		{selector: 'h3', type: 'lines'}
+	], [])
+
+	useSplitText(containerRef, splitText);
+
+	return (
+		<div ref={containerRef} id='journey-content'>
+			<div className="section-container">
+				<div className='justify-self-end'>
+					<img ref={arrowRef} src="/images/journey-gr/arrow-journey.svg" alt="Arrow"/>
+					<p className="typo max-w-125 mt-11">
+						On January 29th, Seppala and his 20 best Siberians set out from Nome with trusty Togo at the helm, to meet the westbound relay and retrieve the vital serum. Among those not selected by Seppala was Balto, whom the musher felt was yet unprepared to lead a team.
+					</p>
+				</div>
+
+				<div className="section-margin md:max-w-[85%] justify-self-end">
+					<h3 className='max-w-221'>
+						With temperatures hovering around -30 degrees, Seppala and his dogs made incredible time in their mad dash east, <span className='text-primary'>covering over 170 miles in just three days.</span>
+					</h3>
+					<div className='flex flex-col desktop:flex-row gap-15 md:gap-30 mt-16'>
+						<p className="typo max-w-130 desktop:max-w-104">
+							All the while, the outbreak worsened back in Nome. Officials decided to add more teams to the relay, unbeknownst to Seppala. After cutting across the treacherously frozen Norton Sound to save time and distance, Seppala miraculously ran right into the team of Henry Ivanoff
+						</p>
+						<p className="typo max-w-130 desktop:max-w-104">
+							One of the relay’s late additions, which was carrying the serum westward. The two teams nearly missed each other on the trail, but, thanks in part to the dogs, the connection was made. Naturally, it then fell to Seppala and Togo to bring the serum back towards Nome.
+						</p>
+					</div>
+				</div>
 			</div>
 
 		</div>
