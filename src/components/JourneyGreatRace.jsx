@@ -68,6 +68,25 @@ const JourneyContent = () => {
 
 	useSplitText(containerRef, splitText);
 
+	useGSAP(() => {
+
+		gsap.from(arrowRef.current, {
+			opacity: 0,
+			y: -4,
+			duration: 1.5,
+			scrollTrigger: {
+				trigger: arrowRef.current,
+				start: 'top 35%',
+			},
+			onEnter: () => {
+				gsap.to(arrowRef.current, {
+					rotation: 7, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
+				});
+			}
+		});
+
+	}, { scope: containerRef });
+
 	return (
 		<div ref={containerRef} id='journey-content'>
 			<div className="section-container">
