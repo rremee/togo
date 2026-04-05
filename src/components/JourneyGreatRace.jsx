@@ -68,7 +68,38 @@ const JourneyContent = () => {
 
 	useSplitText(containerRef, splitText);
 
+	const paws = [
+		{ id: 1, top: '4%', left: '40%', rotate: -120, size: 'clamp(40px, 20vw, 98px)', opacity: .2 },
+		{ id: 2, top: '12%', left: '20%', rotate: -128,  size: 'clamp(50px, 20vw, 148px)', opacity: .4 },
+		{ id: 3, top: '26%', left: '30%', rotate: -132, size: 'clamp(150px, 20vw, 235px)', opacity: .6 },
+		{ id: 4, top: '42%', left: '5%', rotate: -134,  size: 'clamp(170px, 20vw, 255px)', opacity: .8 },
+		{ id: 5, top: '70%', left: '1%', rotate: -136,  size: 'clamp(220px, 20vw, 310px)', opacity: 1 },
+	]
+
 	useGSAP(() => {
+
+		const dogPaws = containerRef.current.querySelectorAll('.paw');
+
+		const getOpacity = (index) =>
+			window.matchMedia('(max-width: 1199px)').matches
+				? 0.1
+				: paws[index].opacity;
+
+		dogPaws.forEach((dogPaw, index) => {
+
+			gsap.fromTo(dogPaw,
+				{opacity: 0, scale: 0.2},
+				{
+					opacity: getOpacity(index),
+					scale: 1,
+					duration: 1.2,
+					ease: 'back.out(1.7)',
+					scrollTrigger: {
+						trigger: dogPaw,
+						start: 'top 50%',
+					}
+				})
+		})
 
 		gsap.from(arrowRef.current, {
 			opacity: 0,
@@ -80,15 +111,41 @@ const JourneyContent = () => {
 			},
 			onEnter: () => {
 				gsap.to(arrowRef.current, {
-					rotation: 7, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
+					rotation: 4, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
 				});
 			}
 		});
 
+		const handleResize = () => {
+			dogPaws.forEach((dogPaw, index) => {
+				if (gsap.getProperty(dogPaw, 'opacity') > 0) {
+					gsap.to(dogPaw, { opacity: getOpacity(index), duration: 0.3 });
+				}
+			});
+		};
+
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+
 	}, { scope: containerRef });
 
 	return (
-		<div ref={containerRef} id='journey-content'>
+		<div ref={containerRef} id='journey-content' className='relative'>
+			{paws.map((paw) => (
+				<img
+					key={paw.id}
+					src="/images/journey-gr/paw.svg"
+					alt="Paw"
+					className='paw absolute pointer-events-none -z-1'
+					style={{
+						top: paw.top,
+						left: paw.left,
+						rotate: `${paw.rotate}deg`,
+						width: paw.size,
+						opacity: paw.opacity
+					}}
+				/>
+			))}
 			<div className="section-container">
 				<div className='justify-self-end'>
 					<img ref={arrowRef} src="/images/journey-gr/arrow-journey.svg" alt="Arrow"/>
