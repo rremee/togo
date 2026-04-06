@@ -10,6 +10,7 @@ import LeadSection from "./components/LeadSection.jsx";
 import Mountains from "./components/Mountains.jsx";
 import IntroGreatRace from "./components/IntroGreatRace.jsx";
 import JourneyGreatRace from "./components/JourneyGreatRace.jsx";
+import MapJourney from "./components/MapJourney.jsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -29,7 +30,8 @@ function App() {
               {/*<HeadingScrollHorizontal header='Great Race of Mercy'/>*/}
               <div className="h-dvh"></div>
               {/*<IntroGreatRace/>*/}
-              <JourneyGreatRace/>
+              {/*<JourneyGreatRace/>*/}
+              <MapJourney/>
               <div className="h-dvh"></div>
           </section>
       </main>
