@@ -143,7 +143,7 @@ img {
     }
 
     #puppy-background,
-    #final-journey{
+    #final-journey-bg{
         @apply h-dvh flex items-center;
     }
 
