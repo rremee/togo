@@ -12,6 +12,7 @@ import IntroGreatRace from "./components/IntroGreatRace.jsx";
 import JourneyGreatRace from "./components/JourneyGreatRace.jsx";
 import MapJourney from "./components/MapJourney.jsx";
 import WaterJourney from "./components/WaterJourney.jsx";
+import FinalJourney from "./components/FinalJourney.jsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -33,7 +34,8 @@ function App() {
               {/*<IntroGreatRace/>*/}
               {/*<JourneyGreatRace/>*/}
               {/*<MapJourney/>*/}
-              <WaterJourney/>
+              {/*<WaterJourney/>*/}
+              <FinalJourney />
               <div className="h-dvh"></div>
           </section>
       </main>
