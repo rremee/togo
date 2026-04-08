@@ -13,6 +13,7 @@ import JourneyGreatRace from "./components/JourneyGreatRace.jsx";
 import MapJourney from "./components/MapJourney.jsx";
 import WaterJourney from "./components/WaterJourney.jsx";
 import FinalJourney from "./components/FinalJourney.jsx";
+import LegacyOfHero from "./components/LegacyOfHero.jsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -30,14 +31,16 @@ function App() {
           {/*<Mountains/>*/}
           <section id='great-race' className='theme-light relative z-1'>
               {/*<HeadingScrollHorizontal header='Great Race of Mercy'/>*/}
-              <div className="h-dvh"></div>
               {/*<IntroGreatRace/>*/}
               {/*<JourneyGreatRace/>*/}
               {/*<MapJourney/>*/}
               {/*<WaterJourney/>*/}
-              <FinalJourney />
               <div className="h-dvh"></div>
+              <FinalJourney />
+              <img src="/images/ripped.svg" alt="Rip Paper"
+                   className='w-full absolute left-0 bottom-0 pointer-events-none z-10 translate-y-[60%]'/>
           </section>
+          <LegacyOfHero/>
       </main>
     </div>
   )

@@ -27,7 +27,7 @@ const FinalJourney = () => {
 	useArrowReveal(containerContentRef, arrowRef);
 
 	return (
-		<div id='final-journey' className='section-margin'>
+		<div id='final-journey' className='section-margin pb-70'>
 			<div ref={containerImageRef} id='final-journey-bg' className='relative overflow-hidden'>
 				<div className='bg-image-parallax' style={{backgroundImage: `var(--gradient),
                     url("/images/great-race-final.png")`,

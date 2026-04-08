@@ -70,7 +70,7 @@ img {
     }
 
     .section-container {
-        @apply max-w-300 w-full mx-auto px-6 lg:px-10;
+        @apply max-w-310 w-full mx-auto px-6 lg:px-10;
     }
 
     .section-margin {
@@ -111,6 +111,9 @@ img {
 
         h2 {
             @apply text-primary uppercase leading-[1.14] tracking-[0.01em] font-bold text-[clamp(60px,12vw,244px)];
+            span {
+               @apply text-[clamp(30px,6vw,100px)] lg:text-[clamp(60px,3vw,100px)];
+            }
         }
 
         h3 {
