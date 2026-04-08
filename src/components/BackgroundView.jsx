@@ -4,6 +4,7 @@ import {useRef, useMemo} from "react";
 import {useSplitText} from "../hooks/useSplitText.jsx";
 import useBackgroundParallax from "../hooks/useBackgroundParallax.jsx";
 import QuoteBlock from "./QuoteBlock.jsx";
+import useArrowReveal from "../hooks/useArrowReveal.jsx";
 
 const BackgroundView = () => {
 	return (
@@ -126,6 +127,8 @@ const BackgroundThird = () => {
 
 	useSplitText(containerRef, splitText);
 
+	useArrowReveal(containerRef, arrowRef);
+
 	useGSAP(() => {
 
 		gsap.from('.sun-icon', {
@@ -135,21 +138,6 @@ const BackgroundThird = () => {
 			scrollTrigger: {
 				trigger: '.sun-icon',
 				start: 'top 90%',
-			}
-		});
-
-		gsap.from(arrowRef.current, {
-			opacity: 0,
-			x: -40,
-			duration: 1.5,
-			scrollTrigger: {
-				trigger: arrowRef.current,
-				start: 'top 80%',
-			},
-			onEnter: () => {
-				gsap.to(arrowRef.current, {
-					rotation: 15, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
-				});
 			}
 		});
 
