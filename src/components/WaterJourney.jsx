@@ -1,8 +1,6 @@
-import {useGSAP} from "@gsap/react";
 import {useMemo, useRef} from "react";
-import gsap from "gsap";
 import {useSplitText} from "../hooks/useSplitText.jsx";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
+import useSvgDrawing from "../hooks/useSvgDrawing.jsx";
 
 const WaterJourney = () => {
 	return (
@@ -39,32 +37,9 @@ const WaterView = () => {
 
 	useSplitText(containerRef, splitText);
 
-	useGSAP(() => {
-
-		ScrollTrigger.create({
-			trigger: 'h3',
-			start: 'top 60%',
-			onEnter: () => {
-				const water = containerRef.current.querySelector('.water');
-
-				if (water) {
-					gsap.fromTo('.water',
-						{
-							strokeDasharray: '1000',
-							strokeDashoffset: '1000',
-						},
-						{
-							strokeDashoffset: '0',
-							duration: 10,
-							delay: .7,
-							ease: 'power2.out',
-						}
-					);
-				}
-			}
-		})
-
-	}, {scope: containerRef});
+	useSvgDrawing(containerRef, [
+		{selector: '.water', trigger: 'h3'}
+	])
 
 	return (
 		<div ref={containerRef} id="water-view">

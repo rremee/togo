@@ -4,7 +4,7 @@ import gsap from "gsap";
 import {useMarqueeText} from "../hooks/useMarqueeText.jsx";
 import {useSplitText} from "../hooks/useSplitText.jsx";
 import QuoteBlock from "./QuoteBlock.jsx";
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import useSvgDrawing from "../hooks/useSvgDrawing.jsx";
 
 const LeadSection = () => {
 	return (
@@ -42,32 +42,9 @@ const LeadHeader = () => {
 
 	useSplitText(containerRef, splitTargets);
 
-	useGSAP(() => {
-
-		ScrollTrigger.create({
-			trigger: 'h3',
-			start: 'top 60%',
-			onEnter: () => {
-				const arrowPath = containerRef.current.querySelector('.arrow');
-
-				if (arrowPath) {
-					gsap.fromTo('.arrow',
-						{
-							strokeDasharray: '1000',
-							strokeDashoffset: '1000',
-						},
-						{
-							strokeDashoffset: '0',
-							duration: 10,
-							delay: .7,
-							ease: 'power2.out',
-						}
-					);
-				}
-			}
-		})
-
-	}, {scope: containerRef});
+	useSvgDrawing(containerRef, [
+		{selector: '.arrow', trigger: 'h3'}
+	])
 
 	return (
 		<div id='lead-header' className='section-margin'>

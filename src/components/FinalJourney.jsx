@@ -3,7 +3,7 @@ import gsap from "gsap";
 import {useRef, useMemo} from "react";
 import {useSplitText} from "../hooks/useSplitText.jsx";
 import useBackgroundParallax from "../hooks/useBackgroundParallax.jsx";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
+import useSvgDrawing from "../hooks/useSvgDrawing.jsx";
 
 const FinalJourney = () => {
 
@@ -21,6 +21,10 @@ const FinalJourney = () => {
 
 	useBackgroundParallax(containerImageRef);
 
+	useSvgDrawing(containerContentRef, [
+		{ selector: '.sign',  trigger: 'h3:last-of-type', enter: true }
+	])
+
 	useGSAP(() => {
 		gsap.from(arrowRef.current, {
 			opacity: 0,
@@ -37,29 +41,6 @@ const FinalJourney = () => {
 			}
 		});
 
-		ScrollTrigger.create({
-			trigger: 'h3:last-of-type',
-			start: 'top 10%',
-			onEnter: () => {
-				gsap.fromTo('.sign',
-					{
-						strokeDasharray: '1000',
-						strokeDashoffset: '1000',
-					},
-					{
-						strokeDashoffset: '0',
-						duration: 10,
-						delay: .7,
-						ease: 'power2.out',
-						onEnter: () => {
-							gsap.to('.sign', {
-								rotation: -3, scale: 1.1, duration: 1, repeat: -1, yoyo: true, ease: 'sine.inOut'
-							});
-						}
-					}
-				);
-			}
-		})
 	}, {scope: containerContentRef});
 
 	return (
@@ -101,7 +82,6 @@ const FinalJourney = () => {
 						<path d="M68.0921 10.002C65.8613 23.3863 59.1971 35.3517 54.2272 47.8637C48.8575 61.3821 45.649 75.147 41.7844 89.1027C39.5797 97.064 37.1935 112.891 31.2969 118.788" stroke="#BB421B" strokeWidth="20" strokeLinecap="round"/>
 						<path d="M20.0984 165.182C12.834 172.446 3.21296 178.726 16.9877 184.024C27.8543 188.203 17.5114 171.036 15.2991 168.381" stroke="#BB421B" strokeWidth="20" strokeLinecap="round"/>
 					</svg>
-
 				</div>
 			</div>
 		</div>
