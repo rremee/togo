@@ -44,6 +44,13 @@ const LegacyRest = () => {
 	const containerRef = useRef(null);
 	const imageRef = useRef(null);
 
+	const splitText = useMemo(() => [
+		{ selector: '.typo', type: 'lines' },
+		{ selector: 'h3', type: 'lines' }
+	], [])
+
+	useSplitText(containerRef, splitText);
+
 	useArrowReveal(containerRef, imageRef, {rotation: 4, duration: 5});
 
 	return (
@@ -54,7 +61,7 @@ const LegacyRest = () => {
 					ref={imageRef}
 					src="/images/rip.svg"
 					alt="RIP"
-					className='absolute -left-10 opacity-12! md:opacity-100! z-1'/>
+					className='absolute -left-10 opacity-12! lg:opacity-100! z-1'/>
 				<div className='max-w-115 justify-self-end relative z-2'>
 					<p className="typo">
 						In the years following the serum run, Seppala made trips to the Lower 48 states with his heroic sled dogs. Seppala traveled all the way to New England and took on a team of local Chinooks in a friendly sled dog race. With Togo in the lead in what would be his final race, the much-smaller Siberians triumphed.
