@@ -5,6 +5,7 @@ import {useSplitText} from "../hooks/useSplitText.jsx";
 import useBackgroundParallax from "../hooks/useBackgroundParallax.jsx";
 import QuoteBlock from "./QuoteBlock.jsx";
 import useArrowReveal from "../hooks/useArrowReveal.jsx";
+import usePictureAppear from "../hooks/usePictureAppear.jsx";
 
 const BackgroundView = () => {
 	return (
@@ -27,20 +28,7 @@ const BackgroundFirst = () => {
 
 	useSplitText(containerRef, splitText);
 
-	useGSAP(() => {
-
-		gsap.from(imageRef.current, {
-			opacity: 0,
-			xPercent: -10,
-			duration: 2,
-			ease: 'expo.out',
-			scrollTrigger: {
-				trigger: imageRef.current,
-				start: 'top 65%'
-			}
-		})
-
-	}, {scope: containerRef})
+	usePictureAppear(containerRef, imageRef);
 
 	return (
 		<div className="puppy-intro">

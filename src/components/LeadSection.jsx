@@ -1,17 +1,16 @@
-import {useGSAP} from "@gsap/react";
 import {useMemo, useRef} from "react";
-import gsap from "gsap";
 import {useMarqueeText} from "../hooks/useMarqueeText.jsx";
 import {useSplitText} from "../hooks/useSplitText.jsx";
 import QuoteBlock from "./QuoteBlock.jsx";
 import useSvgDrawing from "../hooks/useSvgDrawing.jsx";
+import usePictureAppear from "../hooks/usePictureAppear.jsx";
 
 const LeadSection = () => {
 	return (
 		<section id="born-to-lead">
-			{/*<LeadHeader/>*/}
-			{/*<LeadView/>*/}
-			{/*<LeadContent/>*/}
+			<LeadHeader/>
+			<LeadView/>
+			<LeadContent/>
 			<LeadFooter/>
 		</section>
 	);
@@ -80,20 +79,7 @@ const LeadView = () => {
 
 	useSplitText(containerRef, splitParagraphs);
 
-	useGSAP(() => {
-
-		gsap.from(imageRef.current, {
-			opacity: 0,
-			xPercent: -10,
-			duration: 2,
-			ease: 'expo.out',
-			scrollTrigger: {
-				trigger: imageRef.current,
-				start: 'top 65%'
-			}
-		})
-
-	}, {scope: containerRef})
+	usePictureAppear(containerRef, imageRef)
 
 	return (
 		<div id="lead-view">

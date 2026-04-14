@@ -1,7 +1,7 @@
 import {useRef, useMemo} from "react";
 import {useSplitText} from "../hooks/useSplitText.jsx";
 import useArrowReveal from "../hooks/useArrowReveal.jsx";
-import useBackgroundParallax from "../hooks/useBackgroundParallax.jsx";
+import usePictureAppear from "../hooks/usePictureAppear.jsx";
 
 const LegacyOfHero = () => {
 	return (
@@ -89,6 +89,7 @@ const LegacyRest = () => {
 const LegacyTruth = () => {
 
 	const containerRef = useRef(null);
+	const imageRef = useRef(null);
 
 	const splitText = useMemo(() => [
 		{ selector: 'h3', type: 'lines' },
@@ -97,6 +98,7 @@ const LegacyTruth = () => {
 
 	useSplitText(containerRef, splitText);
 
+	usePictureAppear(containerRef, imageRef);
 
 	return (
 		<div ref={containerRef} id='legacy-truth' className='section-margin'>
@@ -105,7 +107,7 @@ const LegacyTruth = () => {
 					Over the years, more and more began to recognize <span className='text-primary'>Togo as the serum run’s true hero dog.</span>
 				</h3>
 			</div>
-			<div className='legacy-img rotate-2 my-16 md:my-22 justify-self-center'></div>
+			<div ref={imageRef} className='legacy-img rotate-2 my-16 md:my-22 justify-self-center'></div>
 			<div className="section-container">
 				<p className="typo max-w-139 justify-self-end">
 					Eventually, in 1983, his mounted body was given a place of honor at the Iditarod Race Headquarters in Wasilla, Alaska. Most famous among modern dog sled races, the Iditarod Trail Sled Dog Race is held each year in March, with parts of the route traversing the same 1925 serum run trails taken all those years ago.
