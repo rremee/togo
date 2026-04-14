@@ -44,7 +44,7 @@ const LegacyRest = () => {
 	const containerRef = useRef(null);
 	const imageRef = useRef(null);
 
-	useArrowReveal(containerRef, imageRef);
+	useArrowReveal(containerRef, imageRef, {rotation: 4, duration: 5});
 
 	return (
 		<div ref={containerRef} id='legacy-rest' className='section-margin'>

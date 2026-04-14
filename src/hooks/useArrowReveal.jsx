@@ -1,7 +1,11 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-const useArrowReveal = (containerRef, arrowRef) => {
+const useArrowReveal = (containerRef, arrowRef, options = {}) => {
+	const {
+		rotation = 15,
+		duration = 3
+	} = options;
 	useGSAP(() => {
 		gsap.from(arrowRef.current, {
 			opacity: 0,
@@ -13,7 +17,11 @@ const useArrowReveal = (containerRef, arrowRef) => {
 			},
 			onEnter: () => {
 				gsap.to(arrowRef.current, {
-					rotation: 15, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut'
+					rotation: rotation,
+					duration: duration,
+					repeat: -1,
+					yoyo: true,
+					ease: 'sine.inOut'
 				});
 			}
 		});
