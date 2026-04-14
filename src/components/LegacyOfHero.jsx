@@ -1,12 +1,14 @@
 import {useRef, useMemo} from "react";
 import {useSplitText} from "../hooks/useSplitText.jsx";
 import useArrowReveal from "../hooks/useArrowReveal.jsx";
+import useBackgroundParallax from "../hooks/useBackgroundParallax.jsx";
 
 const LegacyOfHero = () => {
 	return (
 		<section id='legacy-hero'>
 			<LegacyHeader/>
 			<LegacyRest/>
+			<LegacyTruth/>
 			<div className="h-dvh"></div>
 		</section>
 	);
@@ -79,6 +81,35 @@ const LegacyRest = () => {
 						In 1932, Seppala returned to Alaska, whereupon the kennel closed and the dogs were delegated to friend Harry Wheeler. According to the Siberian Husky Club of America, all of the breed’s registered dogs of today can trace their ancestry to the dogs from the Seppala-Ricker kennel or Harry Wheeler’s kennel.
 					</p>
 				</div>
+			</div>
+		</div>
+	)
+}
+
+const LegacyTruth = () => {
+
+	const containerRef = useRef(null);
+
+	const splitText = useMemo(() => [
+		{ selector: 'h3', type: 'lines' },
+		{ selector: '.typo', type: 'lines' }
+	], [])
+
+	useSplitText(containerRef, splitText);
+
+
+	return (
+		<div ref={containerRef} id='legacy-truth' className='section-margin'>
+			<div className="section-container">
+				<h3 className='max-w-lg'>
+					Over the years, more and more began to recognize <span className='text-primary'>Togo as the serum run’s true hero dog.</span>
+				</h3>
+			</div>
+			<div className='legacy-img rotate-2 my-16 md:my-22 justify-self-center'></div>
+			<div className="section-container">
+				<p className="typo max-w-139 justify-self-end">
+					Eventually, in 1983, his mounted body was given a place of honor at the Iditarod Race Headquarters in Wasilla, Alaska. Most famous among modern dog sled races, the Iditarod Trail Sled Dog Race is held each year in March, with parts of the route traversing the same 1925 serum run trails taken all those years ago.
+				</p>
 			</div>
 		</div>
 	)
