@@ -29,17 +29,16 @@ function App() {
           {/*<BackgroundView/>*/}
           {/*<LeadSection/>*/}
           {/*<Mountains/>*/}
-          <section id='great-race' className='theme-light relative z-1'>
-              {/*<HeadingScrollHorizontal header='Great Race of Mercy'/>*/}
-              {/*<IntroGreatRace/>*/}
-              {/*<JourneyGreatRace/>*/}
-              {/*<MapJourney/>*/}
-              {/*<WaterJourney/>*/}
-              <div className="h-dvh"></div>
-              <FinalJourney />
-              <img src="/images/ripped.svg" alt="Rip Paper"
-                   className='w-full absolute left-0 bottom-0 pointer-events-none z-10 translate-y-[60%]'/>
-          </section>
+          {/*<section id='great-race' className='theme-light relative z-1'>*/}
+          {/*    /!*<HeadingScrollHorizontal header='Great Race of Mercy'/>*!/*/}
+          {/*    /!*<IntroGreatRace/>*!/*/}
+          {/*    /!*<JourneyGreatRace/>*!/*/}
+          {/*    /!*<MapJourney/>*!/*/}
+          {/*    /!*<WaterJourney/>*!/*/}
+          {/*    <FinalJourney />*/}
+          {/*    <img src="/images/ripped.svg" alt="Rip Paper"*/}
+          {/*         className='w-full absolute left-0 bottom-0 pointer-events-none z-10 translate-y-[60%]'/>*/}
+          {/*</section>*/}
           <LegacyOfHero/>
       </main>
     </div>
