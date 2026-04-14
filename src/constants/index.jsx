@@ -14,8 +14,20 @@ const infoScrollingParagraphsSecond = [
 		A multi-team dog sled relay was arranged to deliver 300,000 units of serum, already en route to Nenana by rail, <span>the remaining 674 miles to Nome.</span>
 	</>
 ]
+const infoScrollingParagraphsThird = [
+	<>
+		In 2019, dog’s story was retold in the riveting Disney+ movie “Togo”. <span>And just from that film, images were used in this project.</span>
+	</>,
+	<>
+		But ...
+	</>,
+	<>
+		Let's take a look at a couple of <br/> <span>real-life heroes from 1925</span>
+	</>
+]
 
 export {
 	infoScrollingParagraphsFirst,
-	infoScrollingParagraphsSecond
+	infoScrollingParagraphsSecond,
+	infoScrollingParagraphsThird
 }

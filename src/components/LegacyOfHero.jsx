@@ -7,11 +7,10 @@ import QuoteBlock from "./QuoteBlock.jsx";
 const LegacyOfHero = () => {
 	return (
 		<section id='legacy-hero'>
-			{/*<LegacyHeader/>*/}
-			{/*<LegacyRest/>*/}
-			{/*<LegacyTruth/>*/}
+			<LegacyHeader/>
+			<LegacyRest/>
+			<LegacyTruth/>
 			<LegacySeppala/>
-			<div className="h-dvh"></div>
 		</section>
 	);
 };

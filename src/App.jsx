@@ -3,7 +3,7 @@ import {ScrollTrigger, SplitText} from "gsap/all";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import InfoScrolling from "./components/InfoScrolling.jsx";
-import {infoScrollingParagraphsFirst} from "./constants/index.jsx";
+import {infoScrollingParagraphsFirst, infoScrollingParagraphsThird} from "./constants/index.jsx";
 import HeadingScrollHorizontal from "./components/HeadingScrollHorizontal.jsx";
 import BackgroundView from "./components/BackgroundView.jsx";
 import LeadSection from "./components/LeadSection.jsx";
@@ -40,6 +40,7 @@ function App() {
           {/*         className='w-full absolute left-0 bottom-0 pointer-events-none z-10 translate-y-[60%]'/>*/}
           {/*</section>*/}
           <LegacyOfHero/>
+          <InfoScrolling text={infoScrollingParagraphsThird}/>
       </main>
     </div>
   )
