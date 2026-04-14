@@ -43,7 +43,7 @@ const QuoteBlock = ({quote, author, className = "max-w-150", headingClassName = 
 			<div ref={quoteRef}
 			     className={`flex flex-col gap-8 desktop:gap-10 quote-block ${className}`}>
 				<div>
-					<img src="/images/quote.svg" alt="Quote" className='w-[20%]'/>
+					<img src="/images/quote.svg" alt="Quote" className='w-[12%]'/>
 				</div>
 				<h3 className={`${headingClassName}`}>
 					{quote}

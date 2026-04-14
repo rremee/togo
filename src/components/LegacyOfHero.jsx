@@ -2,13 +2,15 @@ import {useRef, useMemo} from "react";
 import {useSplitText} from "../hooks/useSplitText.jsx";
 import useArrowReveal from "../hooks/useArrowReveal.jsx";
 import usePictureAppear from "../hooks/usePictureAppear.jsx";
+import QuoteBlock from "./QuoteBlock.jsx";
 
 const LegacyOfHero = () => {
 	return (
 		<section id='legacy-hero'>
-			<LegacyHeader/>
-			<LegacyRest/>
-			<LegacyTruth/>
+			{/*<LegacyHeader/>*/}
+			{/*<LegacyRest/>*/}
+			{/*<LegacyTruth/>*/}
+			<LegacySeppala/>
 			<div className="h-dvh"></div>
 		</section>
 	);
@@ -112,6 +114,47 @@ const LegacyTruth = () => {
 				<p className="typo max-w-139 justify-self-end">
 					Eventually, in 1983, his mounted body was given a place of honor at the Iditarod Race Headquarters in Wasilla, Alaska. Most famous among modern dog sled races, the Iditarod Trail Sled Dog Race is held each year in March, with parts of the route traversing the same 1925 serum run trails taken all those years ago.
 				</p>
+			</div>
+		</div>
+	)
+}
+
+const LegacySeppala = () => {
+
+	const containerRef = useRef(null);
+	const arrowRef = useRef(null);
+
+	const splitText = useMemo(() => [
+		{ selector: 'h3:first-child', type: 'lines' },
+		{ selector: '.typo', type: 'lines' }
+	], [])
+
+	useSplitText(containerRef, splitText);
+
+	useArrowReveal(containerRef, arrowRef);
+
+	return (
+		<div ref={containerRef} id='legacy-seppala' className='section-margin'>
+			<div className="section-container">
+				<h3 className="sm:max-w-[80%] lg:max-w-[60%]">
+					<span className='text-primary'>Seppala himself passed away in 1967 at the age of 89.</span> A fitting tribute, the Leonhard Seppala Humanitarian Award is given to the Iditarod musher each year judged to have taken the best care of their dogs.
+				</h3>
+				<div className="mt-11 relative">
+					<img ref={arrowRef} src="/images/legacy-arrow.svg" alt="Arrow" className='absolute min-[934px]:block! hidden! left-[-4%] desktop:left-[-14%] md:bottom-[-340%] desktop:bottom-[-450%]! w-[clamp(140px,24vw,520px)] desktop:w-auto pointer-events-none'/>
+
+					<p className="typo max-w-127">
+						As for his thoughts on Togo and the “Great Race of Mercy”, which changed the course of his own life and dog sledding forevermore, Seppala summed it up thusly in his unpublished autobiography before his passing:
+					</p>
+				</div>
+				<QuoteBlock
+					className='mt-34 md:mt-56 ml-auto max-w-174'
+					quote={(
+						<>
+							Afterwards, I thought of the ice and the darkness and the terrible wind and the irony that men could build planes and ships. But when Nome needed life in little packages of serum, it took the <span className='text-primary'>dogs</span> to bring it through.
+						</>
+					)}
+					author={'Leonhard Seppala'}
+				/>
 			</div>
 		</div>
 	)
