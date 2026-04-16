@@ -15,6 +15,7 @@ import WaterJourney from "./components/WaterJourney.jsx";
 import FinalJourney from "./components/FinalJourney.jsx";
 import LegacyOfHero from "./components/LegacyOfHero.jsx";
 import Gallery from "./components/Gallery.jsx";
+import End from "./components/End.jsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -42,8 +43,9 @@ function App() {
           {/*</section>*/}
           {/*<LegacyOfHero/>*/}
           {/*<InfoScrolling text={infoScrollingParagraphsThird}/>*/}
-          <div className="h-dvh"></div>
-          <Gallery/>
+          {/*<div className="h-dvh"></div>*/}
+          {/*<Gallery/>*/}
+          <End/>
       </main>
     </div>
   )

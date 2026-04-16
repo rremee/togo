@@ -27,6 +27,7 @@
     --color-dark: #141414;
     --color-gray: #D2D2D2;
     --color-light-theme: #C9C9C9;
+    --color-social: #232323;
     --gradient: linear-gradient(263deg, rgba(104, 60, 18, 0.21) 0%, rgba(62, 30, 0, 0.21) 100%);
     --breakpoint-desktop: 1254px;
 }
@@ -197,5 +198,18 @@ img {
 
     @media (prefers-reduced-motion: reduce) {
         .wave { animation: none; }
+    }
+
+    .share-link {
+        @apply bg-social flex h-11 w-11 items-center justify-center rounded-full transition-opacity duration-400 opacity-[0.2];
+        &:hover {
+            @apply opacity-100;
+        }
+    }
+    .contact-link {
+        @apply uppercase transition-colors duration-400;
+        &:hover {
+            @apply text-primary;
+        }
     }
 }
