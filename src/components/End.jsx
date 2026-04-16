@@ -14,32 +14,32 @@ const End = () => {
 						<ul className='mt-8 flex gap-x-2'>
 							<li>
 								<a className='share-link' href="">
-									f
+									<span className='icon-instagram'></span>
 								</a>
 							</li>
 							<li>
 								<a className='share-link' href="">
-									f
+									<span className='icon-facebook'></span>
 								</a>
 							</li>
 							<li>
 								<a className='share-link' href="">
-									f
+									<span className='icon-telegram'></span>
 								</a>
 							</li>
 							<li>
 								<a className='share-link' href="">
-									f
+									<span className='icon-linkedin'></span>
 								</a>
 							</li>
 							<li>
 								<a className='share-link' href="">
-									f
+									<span className='icon-x-twitter'></span>
 								</a>
 							</li>
 							<li>
 								<a className='share-link' href="">
-									f
+									<span className='icon-discord'></span>
 								</a>
 							</li>
 						</ul>
