@@ -14,6 +14,7 @@ import MapJourney from "./components/MapJourney.jsx";
 import WaterJourney from "./components/WaterJourney.jsx";
 import FinalJourney from "./components/FinalJourney.jsx";
 import LegacyOfHero from "./components/LegacyOfHero.jsx";
+import Gallery from "./components/Gallery.jsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -39,8 +40,10 @@ function App() {
           {/*    <img src="/images/ripped.svg" alt="Rip Paper"*/}
           {/*         className='w-full absolute left-0 bottom-0 pointer-events-none z-10 translate-y-[60%]'/>*/}
           {/*</section>*/}
-          <LegacyOfHero/>
-          <InfoScrolling text={infoScrollingParagraphsThird}/>
+          {/*<LegacyOfHero/>*/}
+          {/*<InfoScrolling text={infoScrollingParagraphsThird}/>*/}
+          <div className="h-dvh"></div>
+          <Gallery/>
       </main>
     </div>
   )

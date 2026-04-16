@@ -25,9 +25,31 @@ const infoScrollingParagraphsThird = [
 		Let's take a look at a couple of <br/> <span>real-life heroes from 1925</span>
 	</>
 ]
+const galleryPhotos = [
+	{ id: 1, src: '/images/gallery/gallery-photo-01.png', colSpan: 'md:col-span-6', colStart: 'md:col-start-1', row: 'row-start-1', rotate: '-rotate-5' },
+	{ id: 2, src: '/images/gallery/gallery-photo-02.png', colSpan: 'md:col-span-6', colStart: 'md:col-start-8', row: 'md:row-start-1', mt: 'md:mt-[-3rem]', rotate: 'rotate-5' },
+	{ id: 3, src: '/images/gallery/gallery-photo-03.png', colSpan: 'md:col-span-6', colStart: 'md:col-start-1', rotate: 'rotate-3' },
+	{ id: 4, src: '/images/gallery/gallery-photo-04.png', colSpan: 'md:col-span-6', colStart: 'md:col-start-8', mt: 'md:mt-[-5rem]' },
+	{ id: 5, src: '/images/gallery/gallery-photo-05.png', colSpan: 'md:col-span-12', colStart: 'md:col-start-1' },
+	{ id: 6, src: '/images/gallery/gallery-photo-06.png', colSpan: 'md:col-span-7', colStart: 'md:col-start-1', row: 'md:row-start-4' },
+	{ id: 7, src: '/images/gallery/gallery-photo-07.png', colSpan: 'md:col-span-6', colStart: 'md:col-start-7', row: 'md:row-start-4', mt: 'md:mt-[20rem]', zIndex: 'z-[2]' },
+	{ id: 8, src: '/images/gallery/gallery-photo-08.png', colSpan: 'md:col-span-11', colStart: 'md:col-start-2' },
+	{ id: 9, src: '/images/gallery/gallery-photo-09.png', colSpan: 'md:col-span-6', colStart: 'md:col-start-1' },
+	{ id: 10, src: '/images/gallery/gallery-photo-10.png', colSpan: 'md:col-span-6', colStart: 'md:col-start-8', mt: 'md:mt-[60rem]' },
+	{ id: 11, src: '/images/gallery/gallery-photo-11.png', colSpan: 'md:col-span-5', colStart: 'md:col-start-1', rotate: 'rotate-5' },
+	{ id: 12, src: '/images/gallery/gallery-photo-12.png', colSpan: 'md:col-span-6', colStart: 'md:col-start-7', mt: 'md:mt-[20rem]', rotate: '-rotate-5' },
+	{ id: 13, src: '/images/gallery/gallery-photo-13.png', colSpan: 'md:col-span-6', colStart: 'md:col-start-2' },
+	{ id: 14, src: '/images/gallery/gallery-photo-14.png', colSpan: 'md:col-span-10', colStart: 'md:col-start-5' },
+	{ id: 15, src: '/images/gallery/gallery-photo-15.png', colSpan: 'md:col-span-4', colStart: 'md:col-start-1', rotate: '-rotate-5' },
+	{ id: 16, src: '/images/gallery/gallery-photo-16.png', colSpan: 'md:col-span-7', colStart: 'md:col-start-6', mt: 'md:mt-[10rem]' },
+	{ id: 17, src: '/images/gallery/gallery-photo-17.png', colSpan: 'md:col-span-7', colStart: 'md:col-start-1', row: 'md:row-start-11', rotate: '-rotate-3' },
+	{ id: 18, src: '/images/gallery/gallery-photo-18.png', colSpan: 'md:col-span-6', colStart: 'md:col-start-7', row: 'md:row-start-11', mt: 'md:mt-[26rem]' },
+	{ id: 19, src: '/images/gallery/gallery-photo-19.png', colSpan: 'md:col-span-12', colStart: 'md:col-start-1' },
+]
 
 export {
 	infoScrollingParagraphsFirst,
 	infoScrollingParagraphsSecond,
-	infoScrollingParagraphsThird
+	infoScrollingParagraphsThird,
+	galleryPhotos
 }
