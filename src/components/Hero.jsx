@@ -57,7 +57,7 @@ const Hero = () => {
 
 	return (
 		<section ref={heroRef} id="hero">
-			<div className='bg-image-parallax' style={{backgroundImage: `var(--gradient),
+			<div className='bg-image-parallax bg-center' style={{backgroundImage: `var(--gradient),
                     url("/images/home-img.jpg")`}}>
 			</div>
 			<div className="section-container">
