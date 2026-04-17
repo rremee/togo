@@ -20,9 +20,10 @@ const End = () => {
 
 	useSplitText(containerRef, splitText);
 
-	const shareUrl = encodeURIComponent(typeof window !== 'undefined' ? window.location.href : ''),
+	const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin,
+		  shareUrl = encodeURIComponent(siteUrl),
 		  shareText = encodeURIComponent('Check out this awesome story about hero sled dog!'),
-		  shareImage = encodeURIComponent('/images/great-race-intro-view.png');
+		  shareImage = encodeURIComponent(`${siteUrl}/images/cover-image.jpg`);
 
 	return (
 		<footer ref={containerRef} id="end" className='py-10 sm:py-18 bg-end section-margin relative min-h-[740px]'>
