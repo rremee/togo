@@ -13,7 +13,7 @@ const End = () => {
 		{selector: 'h2', type: 'words'},
 		{selector: 'h3', type: 'chars'},
 		{selector: 'p', type: 'lines'},
-		{selector: 'ul:first-of-type li', type: 'lines'},
+		{selector: '.share-list li', type: 'lines'},
 		{selector: '.contact-link', type: 'chars'},
 		{selector: '.up', type: 'chars', options: {start: 'top 75%'}}
 	], [])
@@ -21,7 +21,11 @@ const End = () => {
 	useSplitText(containerRef, splitText);
 
 	return (
-		<footer ref={containerRef} id="end" className='py-10 sm:py-18'>
+		<footer ref={containerRef} id="end" className='py-10 sm:py-18 bg-end section-margin relative min-h-[740px]'>
+			<img
+				src="/images/ripped-end.svg"
+				alt="Rip Paper"
+				className='w-full absolute left-0 top-0 pointer-events-none z-10 translate-y-[-70%]'/>
 			<div className="section-container">
 				<div className='grid gap-y-9 grid-cols-1 sm:grid-cols-2 sm:gap-8.75'>
 					<h2 className="col-span-4 col-start-1 row-start-1 text-[clamp(60px,24vw,244px)] sm:text-[clamp(60px,16vw,244px)]">
@@ -31,7 +35,7 @@ const End = () => {
 						<p className="typo text-primary">
 							share the story
 						</p>
-						<ul className='mt-4 sm:mt-8 flex flex-wrap gap-2'>
+						<ul className='share-list mt-4 sm:mt-8 flex flex-wrap gap-2'>
 							<li>
 								<a className='share-link' href="">
 									<span className='icon-instagram'></span>

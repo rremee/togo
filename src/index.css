@@ -72,6 +72,7 @@
     --color-gray: #D2D2D2;
     --color-light-theme: #C9C9C9;
     --color-social: #232323;
+    --color-end: #101010;
     --gradient: linear-gradient(263deg, rgba(104, 60, 18, 0.21) 0%, rgba(62, 30, 0, 0.21) 100%);
     --breakpoint-desktop: 1254px;
 }
