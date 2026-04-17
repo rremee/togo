@@ -51,17 +51,17 @@
 .icon-x-twitter:before {
     content: "\e901";
 }
-.icon-discord:before {
+.icon-pinterest:before {
     content: "\e902";
+}
+.icon-whatsapp:before {
+    content: "\e905";
 }
 .icon-telegram:before {
     content: "\e903";
 }
 .icon-facebook:before {
     content: "\e904";
-}
-.icon-instagram:before {
-    content: "\e905";
 }
 
 @theme {

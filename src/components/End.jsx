@@ -21,7 +21,8 @@ const End = () => {
 	useSplitText(containerRef, splitText);
 
 	const shareUrl = encodeURIComponent(typeof window !== 'undefined' ? window.location.href : ''),
-		  shareText = encodeURIComponent('Check out this awesome story about hero sled dog!');
+		  shareText = encodeURIComponent('Check out this awesome story about hero sled dog!'),
+		  shareImage = encodeURIComponent('/images/great-race-intro-view.png');
 
 	return (
 		<footer ref={containerRef} id="end" className='py-10 sm:py-18 bg-end section-margin relative min-h-[740px]'>
@@ -42,10 +43,10 @@ const End = () => {
 							<li>
 								<a
 									className='share-link'
-									href={`https://www.instagram.com/`}
+									href={`https://api.whatsapp.com/send?text=${shareText}%20${shareUrl}`}
 									target="_blank"
 									rel="noopener noreferrer">
-									<span className='icon-instagram'></span>
+									<span className='icon-whatsapp'></span>
 								</a>
 							</li>
 							<li>
@@ -87,10 +88,10 @@ const End = () => {
 							<li>
 								<a
 									className='share-link'
-									href={`https://discord.com/`}
+									href={`https://www.pinterest.com/pin/create/button/?url=${shareUrl}&media=${shareImage}&description=${shareText}`}
 									target="_blank"
 									rel="noopener noreferrer">
-									<span className='icon-discord'></span>
+									<span className='icon-pinterest'></span>
 								</a>
 							</li>
 						</ul>
