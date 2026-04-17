@@ -30,22 +30,24 @@ function App() {
           {/*<HeadingScrollHorizontal header='Background'/>*/}
           {/*<BackgroundView/>*/}
           {/*<LeadSection/>*/}
-          {/*<Mountains/>*/}
-          {/*<section id='great-race' className='theme-light relative z-1'>*/}
-          {/*    /!*<HeadingScrollHorizontal header='Great Race of Mercy'/>*!/*/}
-          {/*    /!*<IntroGreatRace/>*!/*/}
-          {/*    /!*<JourneyGreatRace/>*!/*/}
-          {/*    /!*<MapJourney/>*!/*/}
-          {/*    /!*<WaterJourney/>*!/*/}
-          {/*    <FinalJourney />*/}
-          {/*    <img src="/images/ripped.svg" alt="Rip Paper"*/}
-          {/*         className='w-full absolute left-0 bottom-0 pointer-events-none z-10 translate-y-[60%]'/>*/}
-          {/*</section>*/}
+          <Mountains/>
+          <section id='great-race' className='theme-light relative z-10'>
+              {/*<HeadingScrollHorizontal header='Great Race of Mercy'/>*/}
+              {/*<IntroGreatRace/>*/}
+              {/*<JourneyGreatRace/>*/}
+              {/*<MapJourney/>*/}
+              {/*<WaterJourney/>*/}
+              {/*<FinalJourney />*/}
+              {/*<img*/}
+              {/*    src="/images/ripped.svg"*/}
+              {/*    alt="Rip Paper"*/}
+              {/*    className='w-full absolute left-0 bottom-0 pointer-events-none z-10 translate-y-[60%]'/>*/}
+          </section>
           {/*<LegacyOfHero/>*/}
           {/*<InfoScrolling text={infoScrollingParagraphsThird}/>*/}
           {/*<div className="h-dvh"></div>*/}
           {/*<Gallery/>*/}
-          <End/>
+          {/*<End/>*/}
       </main>
     </div>
   )

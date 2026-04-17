@@ -217,10 +217,9 @@ img {
     }
 
     .mountain-decor {
-        @apply absolute left-0 bottom-0 z-2 min-w-full pointer-events-none;
-        will-change: transform;
-        transform: translateZ(0);
-        backface-visibility: hidden;
+        @apply will-change-transform pointer-events-none;
+        transform-origin: center center;
+        transform-box: fill-box;
     }
 
     .invisible-on-load {
