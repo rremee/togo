@@ -20,6 +20,9 @@ const End = () => {
 
 	useSplitText(containerRef, splitText);
 
+	const shareUrl = encodeURIComponent(typeof window !== 'undefined' ? window.location.href : ''),
+		  shareText = encodeURIComponent('Check out this awesome story about hero sled dog!');
+
 	return (
 		<footer ref={containerRef} id="end" className='py-10 sm:py-18 bg-end section-margin relative min-h-[740px]'>
 			<img
@@ -37,32 +40,56 @@ const End = () => {
 						</p>
 						<ul className='share-list mt-4 sm:mt-8 flex flex-wrap gap-2'>
 							<li>
-								<a className='share-link' href="">
+								<a
+									className='share-link'
+									href={`https://www.instagram.com/`}
+									target="_blank"
+									rel="noopener noreferrer">
 									<span className='icon-instagram'></span>
 								</a>
 							</li>
 							<li>
-								<a className='share-link' href="">
+								<a
+									className='share-link'
+									href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
+									target="_blank"
+									rel="noopener noreferrer">
 									<span className='icon-facebook'></span>
 								</a>
 							</li>
 							<li>
-								<a className='share-link' href="">
+								<a
+									className='share-link'
+									href={`https://t.me/share/url?url=${shareUrl}&text=${shareText}`}
+									target="_blank"
+									rel="noopener noreferrer">
 									<span className='icon-telegram'></span>
 								</a>
 							</li>
 							<li>
-								<a className='share-link' href="">
+								<a
+									className='share-link'
+									href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
+									target="_blank"
+									rel="noopener noreferrer">
 									<span className='icon-linkedin'></span>
 								</a>
 							</li>
 							<li>
-								<a className='share-link' href="">
+								<a
+									className='share-link'
+									href={`https://x.com/intent/post?url=${shareUrl}&text=${shareText}`}
+									target="_blank"
+									rel="noopener noreferrer">
 									<span className='icon-x-twitter'></span>
 								</a>
 							</li>
 							<li>
-								<a className='share-link' href="">
+								<a
+									className='share-link'
+									href={`https://discord.com/`}
+									target="_blank"
+									rel="noopener noreferrer">
 									<span className='icon-discord'></span>
 								</a>
 							</li>
@@ -82,17 +109,27 @@ const End = () => {
 						</p>
 						<ul className='mt-6 sm:mt-10 flex gap-[clamp(30px,12vw,88px)] sm:gap-x-21 sm:gap-y-8 flex-wrap'>
 							<li>
-								<a className='contact-link' href="">
+								<a
+									className='contact-link'
+									href="https://t.me/reeemmeee"
+									target={'_blank'}
+									rel="noopener noreferrer">
 									telegram
 								</a>
 							</li>
 							<li>
-								<a className='contact-link' href="">
+								<a
+									className='contact-link'
+									href="mailto:u1remited@gmail.com">
 									gmail
 								</a>
 							</li>
 							<li>
-								<a className='contact-link' href="">
+								<a
+									className='contact-link'
+									href="https://www.linkedin.com/in/anton-valkovskyi-61a783184/"
+									target={'_blank'}
+									rel="noopener noreferrer">
 									linkedin
 								</a>
 							</li>
@@ -106,9 +143,11 @@ const End = () => {
 					</div>
 				</div>
 				<div className='justify-self-center mt-16 sm:mt-25'>
-					<a className='uppercase font-bold text-social text-[clamp(30px,20vw,100px)] transition-colors duration-400 hover:text-light up' href="">
+					<button
+						onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+						className='uppercase font-bold text-social text-[clamp(30px,20vw,100px)] transition-colors duration-400 hover:text-light up'>
 						Up
-					</a>
+					</button>
 				</div>
 			</div>
 		</footer>
