@@ -20,8 +20,10 @@ export const useSplitText = (containerRef, targets = []) => {
 			});
 			splitInstances = [];
 
-			targets.forEach(({ selector, type, customAnimation }) => {
+			targets.forEach(({ selector, type, customAnimation, options = {} }) => {
 				const elements = containerRef.current.querySelectorAll(selector);
+
+				const { start = 'top 60%' } = options;
 
 				elements.forEach(el => {
 					const split = new SplitText(el, { type: type || 'lines, words, chars' });
@@ -40,7 +42,7 @@ export const useSplitText = (containerRef, targets = []) => {
 							gsap.from(items, {
 								scrollTrigger: {
 									trigger: el,
-									start: 'top 60%',
+									start: start,
 								},
 								y: 30,
 								opacity: 0,
