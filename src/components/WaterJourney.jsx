@@ -42,7 +42,7 @@ const WaterView = () => {
 	])
 
 	return (
-		<div ref={containerRef} id="water-view">
+		<div ref={containerRef} id="water-view" className='section-margin'>
 			<div className="section-container">
 				<h3 className='md:max-w-[90%]'>
 					On the return trip across the Sound, the team became stranded on an ice floe. The quick-thinking Seppala tied a lead to Togo, his only hope, and tossed the dog across five feet of {' '}
