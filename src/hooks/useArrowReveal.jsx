@@ -4,12 +4,13 @@ import gsap from "gsap";
 const useArrowReveal = (containerRef, arrowRef, options = {}) => {
 	const {
 		rotation = 15,
-		duration = 3
+		duration = 3,
+		x = -40
 	} = options;
 	useGSAP(() => {
 		gsap.from(arrowRef.current, {
 			opacity: 0,
-			x: -40,
+			x: x,
 			duration: 1.5,
 			scrollTrigger: {
 				trigger: arrowRef.current,

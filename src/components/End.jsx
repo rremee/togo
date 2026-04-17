@@ -1,7 +1,15 @@
+import {useRef} from "react";
+import useArrowReveal from "../hooks/useArrowReveal.jsx";
 
 const End = () => {
+
+	const containerRef = useRef(null);
+	const arrowRef = useRef(null);
+
+	useArrowReveal(containerRef, arrowRef, {x:40});
+
 	return (
-		<footer id="end" className='py-10 sm:py-18'>
+		<footer ref={containerRef} id="end" className='py-10 sm:py-18'>
 			<div className="section-container">
 				<div className='grid gap-y-9 grid-cols-1 sm:grid-cols-2 sm:gap-8.75'>
 					<h2 className="col-span-4 col-start-1 row-start-1 text-[clamp(60px,24vw,244px)] sm:text-[clamp(60px,16vw,244px)]">
@@ -52,7 +60,7 @@ const End = () => {
 							design & layout
 						</p>
 					</div>
-					<div className="row-start-4 sm:col-span-6 sm:col-start-10 sm:row-start-2">
+					<div className="row-start-4 sm:col-span-6 sm:col-start-10 sm:row-start-2 relative">
 						<p className="typo">
 							Let's make something awesome!
 						</p>
@@ -73,6 +81,12 @@ const End = () => {
 								</a>
 							</li>
 						</ul>
+						<img
+							ref={arrowRef}
+							src="/images/arrow-end.svg"
+							alt="Arrow"
+							className='absolute top-[-50%] right-[-10%] md:right-[-20%] desktop:!right-[-60%] 2xl:!right-[-80%] pointer-events-none
+							w-[clamp(120px,38vw,260px)] sm:w-[clamp(120px,20vw,260px)]'/>
 					</div>
 				</div>
 				<div className='justify-self-center mt-16 sm:mt-25'>
