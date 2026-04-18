@@ -17,6 +17,7 @@ import FinalJourney from "./components/FinalJourney.jsx";
 import LegacyOfHero from "./components/LegacyOfHero.jsx";
 import Gallery from "./components/Gallery.jsx";
 import End from "./components/End.jsx";
+import Cursor from "./components/Cursor.jsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -48,6 +49,7 @@ function App() {
 
     return (
         <>
+            <Cursor isStart={isStart}/>
             {!isStart && (
                 <div
                     ref={overlayRef}
