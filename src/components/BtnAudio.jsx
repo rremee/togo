@@ -1,7 +1,7 @@
 import {useRef , useEffect} from "react";
 import gsap from 'gsap';
 
-const BtnAudio = () => {
+const BtnAudio = ({autoStart}) => {
 
 	const canvasRef = useRef(null);
 	const audioRef = useRef(null);
@@ -98,6 +98,12 @@ const BtnAudio = () => {
 			});
 		}
 	};
+
+	useEffect(() => {
+		if (autoStart && !settings.current.power) {
+			handleToggle();
+		}
+	}, [autoStart])
 
 	return (
 		<>

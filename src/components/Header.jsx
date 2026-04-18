@@ -2,7 +2,7 @@ import BtnAudio from "./BtnAudio.jsx";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 
-const Header = () => {
+const Header = ({isStarted}) => {
 
 	useGSAP(() => {
 
@@ -28,7 +28,7 @@ const Header = () => {
 					<a href="#hero">
 						<img src="/images/logo.png" alt="logo"/>
 					</a>
-					<BtnAudio/>
+					<BtnAudio autoStart={isStarted} />
 				</div>
 			</div>
 		</header>
