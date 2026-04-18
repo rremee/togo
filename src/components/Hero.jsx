@@ -1,11 +1,25 @@
-import {useRef, useMemo} from "react";
+import {useRef, useMemo, useLayoutEffect} from "react";
 import gsap from "gsap";
 import {useSplitText} from "../hooks/useSplitText.jsx";
 import useBackgroundParallax from "../hooks/useBackgroundParallax.jsx";
+import {useGSAP} from "@gsap/react";
 
-const Hero = () => {
-
+const Hero = ({ isStart }) => {
 	const heroRef = useRef(null);
+	const bgRef = useRef(null);
+
+	useLayoutEffect(() => {
+		gsap.set(bgRef.current, { opacity: 0 });
+	}, []);
+
+	useGSAP(() => {
+		if (!isStart) return;
+		gsap.to(bgRef.current, {
+			opacity: 1,
+			duration: 1,
+			ease: 'power1.in',
+		});
+	}, [isStart]);
 
 	const splitText = useMemo(() => [
 		{
@@ -51,15 +65,16 @@ const Hero = () => {
 		}
 	], [])
 
-	useSplitText(heroRef, splitText);
-
-	useBackgroundParallax(heroRef);
+	useSplitText(heroRef, splitText, isStart);
+	useBackgroundParallax(heroRef, isStart);
 
 	return (
 		<section ref={heroRef} id="hero">
-			<div className='bg-image-parallax bg-center' style={{backgroundImage: `var(--gradient),
-                    url("/images/home-img.jpg")`}}>
-			</div>
+			<div
+				ref={bgRef}
+				className='bg-image-parallax bg-center'
+				style={{ backgroundImage: `var(--gradient), url("/images/home-img.jpg")` }}
+			/>
 			<div className="section-container">
 				<div className='flex flex-col gap-[clamp(10px,5vw,26px)] text-center items-center'>
 					<h3>The untold story of</h3>

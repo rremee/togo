@@ -3,7 +3,7 @@ import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
-export const useSplitText = (containerRef, targets = []) => {
+export const useSplitText = (containerRef, targets = [], isStart = true) => {
 
 	useGSAP(() => {
 		let splitInstances = [];
@@ -22,35 +22,41 @@ export const useSplitText = (containerRef, targets = []) => {
 
 			targets.forEach(({ selector, type, customAnimation, options = {} }) => {
 				const elements = containerRef.current.querySelectorAll(selector);
-
 				const { start = 'top 60%' } = options;
 
 				elements.forEach(el => {
 					const split = new SplitText(el, { type: type || 'lines, words, chars' });
 					splitInstances.push(split);
 
-					if (!isResize) {
-						if (customAnimation) {
-							customAnimation(split, el);
-						} else {
-							const items = type.includes('lines')
-								? split.lines
-								: type.includes('words')
-									? split.words
-									: split.chars;
+					if (isResize) return;
 
-							gsap.from(items, {
-								scrollTrigger: {
-									trigger: el,
-									start: start,
-								},
-								y: 30,
-								opacity: 0,
-								duration: 1.5,
-								stagger: type.includes('lines') ? 0.08 : type.includes('words') ? 0.05 : 0.01,
-								ease: 'expo.out',
-							});
-						}
+					if (!isStart) {
+						const items = type.includes('lines')
+							? split.lines
+							: type.includes('words')
+								? split.words
+								: split.chars;
+						gsap.set(items, { opacity: 0, y: 30 });
+						return;
+					}
+
+					if (customAnimation) {
+						customAnimation(split, el);
+					} else {
+						const items = type.includes('lines')
+							? split.lines
+							: type.includes('words')
+								? split.words
+								: split.chars;
+
+						gsap.from(items, {
+							scrollTrigger: { trigger: el, start },
+							y: 30,
+							opacity: 0,
+							duration: 1.5,
+							stagger: type.includes('lines') ? 0.08 : type.includes('words') ? 0.05 : 0.01,
+							ease: 'expo.out',
+						});
 					}
 				});
 			});
@@ -87,5 +93,5 @@ export const useSplitText = (containerRef, targets = []) => {
 			});
 		};
 
-	}, { scope: containerRef, dependencies: [targets] });
+	}, { scope: containerRef, dependencies: [targets, isStart] });
 };

@@ -1,9 +1,11 @@
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
 
-export const useBackgroundParallax = (containerRef) => {
+const useBackgroundParallax = (containerRef, isStart = true) => {
 
 	useGSAP(() => {
+		if (!isStart) return;
+
 		gsap.to('.bg-image-parallax',{
 			scrollTrigger: {
 				trigger: containerRef.current,
@@ -15,7 +17,7 @@ export const useBackgroundParallax = (containerRef) => {
 			scale: 1.3,
 			ease: "none"
 		});
-	}, {scope: containerRef})
+	}, { scope: containerRef, dependencies: [isStart] });
 };
 
 export default useBackgroundParallax;

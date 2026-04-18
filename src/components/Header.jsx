@@ -1,25 +1,32 @@
 import BtnAudio from "./BtnAudio.jsx";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
+import {useLayoutEffect} from "react";
 
 const Header = ({isStarted}) => {
 
+	useLayoutEffect(() => {
+		gsap.set('#header a', { opacity: 0 });
+		gsap.set('#header canvas', { opacity: 0 });
+	}, []);
+
 	useGSAP(() => {
+		if (!isStarted) return;
 
-		gsap.from('#header a', {
+		gsap.to('#header a', {
 			duration: 1,
-			ease: 'expo.In',
-			xPercent: -50,
-			opacity: 0
-		})
-
-		gsap.from('#header canvas', {
-			duration: 1,
-			ease: 'expo.In',
+			ease: 'power1.out',
 			xPercent: 50,
-			opacity: 0
+			opacity: 1
 		})
-	})
+
+		gsap.to('#header canvas', {
+			duration: 1,
+			ease: 'power1.out',
+			xPercent: -50,
+			opacity: 1
+		})
+	}, [isStarted]);
 
 	return (
 		<header id='header'>

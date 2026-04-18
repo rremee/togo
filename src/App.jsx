@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect, useLayoutEffect, useRef, useCallback}  from 'react';
 import gsap from 'gsap';
 import {ScrollTrigger, SplitText} from "gsap/all";
 import Header from "./components/Header.jsx";
@@ -22,56 +22,85 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 function App() {
 
-    const [isStarted, setIsStarted] = useState(false);
+    const [isStart, setIsStart] = useState(false);
+    const overlayRef = useRef(null);
 
-    if (!isStarted) {
-        return (
-            <div className="fixed inset-0 z-50 flex items-center justify-center">
-                <div className="text-center max-w-sm px-4">
-                    <h2 className="text-2xl font-bold mb-4">This website includes <span className='text-primary'>music</span> </h2>
-                    <p className="mb-8 text-gray opacity-60">
-                        For a more immersive experience, it is recommended to enable sound. You can turn it off at any time.
-                    </p>
-                    <button
-                        onClick={() => setIsStarted(true)}
-                        className="px-7 py-4 bg-light font-bold text-dark rounded-[10px] hover:bg-primary hover:text-light transition-colors duration-400 cursor-pointer"
-                    >
-                        Start your journey
-                    </button>
-                </div>
-            </div>
-        );
-    }
+    useEffect(() => {
+        new Image().src = '/images/home-img.jpg';
+    }, []);
+
+    useLayoutEffect(() => {
+        document.documentElement.style.scrollbarGutter = 'stable';
+        document.documentElement.style.overflow = 'hidden';
+    }, []);
+
+    const handleStart = useCallback(() => {
+        gsap.to(overlayRef.current, {
+            opacity: 0,
+            duration: 0.7,
+            ease: 'power2.inOut',
+            onComplete: () => {
+                document.documentElement.style.overflow = '';
+                setIsStart(true);
+            },
+        });
+    }, []);
 
     return (
-        <div className='wrapper'>
-            <main>
-                <Header isStarted={isStarted} />
-                <Hero/>
-                <InfoScrolling text={infoScrollingParagraphsFirst}/>
-                <HeadingScrollHorizontal header='Background'/>
-                <BackgroundView/>
-                <LeadSection/>
-                <Mountains/>
-                <section id='great-race' className='theme-light relative z-10'>
-                    <HeadingScrollHorizontal header='Great Race of Mercy'/>
-                    <IntroGreatRace/>
-                    <JourneyGreatRace/>
-                    <MapJourney/>
-                    <WaterJourney/>
-                    <FinalJourney />
-                    <img
-                        src="/images/ripped.svg"
-                        alt="Rip Paper"
-                        className='w-full absolute left-0 bottom-0 pointer-events-none z-10 translate-y-[60%]'/>
-                </section>
-                <LegacyOfHero/>
-                <InfoScrolling text={infoScrollingParagraphsThird}/>
-                <Gallery/>
-                <End/>
-            </main>
-        </div>
-    )
+        <>
+            {!isStart && (
+                <div
+                    ref={overlayRef}
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-dark"
+                >
+                    <div className="text-center max-w-sm px-4">
+                        <h2 className="text-2xl font-bold mb-4">
+                            This website includes <span className='text-primary'>music</span>
+                        </h2>
+                        <p className="mb-8 text-gray opacity-60">
+                            For a more immersive experience, it is recommended to enable sound.
+                            You can turn it off at any time.
+                        </p>
+                        <button
+                            onClick={handleStart}
+                            className="px-7 py-4 bg-light font-bold text-dark rounded-[10px] hover:bg-primary hover:text-light transition-colors duration-400 cursor-pointer"
+                        >
+                            Start your journey
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            <div className='wrapper'>
+                <main>
+                    <Header isStarted={isStart} />
+                    <Hero isStart={isStart} />
+                    <InfoScrolling text={infoScrollingParagraphsFirst} />
+                    <HeadingScrollHorizontal header='Background' />
+                    <BackgroundView />
+                    <LeadSection />
+                    <Mountains />
+                    <section id='great-race' className='theme-light relative z-10'>
+                        <HeadingScrollHorizontal header='Great Race of Mercy' />
+                        <IntroGreatRace />
+                        <JourneyGreatRace />
+                        <MapJourney />
+                        <WaterJourney />
+                        <FinalJourney />
+                        <img
+                            src="/images/ripped.svg"
+                            alt="Rip Paper"
+                            className='w-full absolute left-0 bottom-0 pointer-events-none z-10 translate-y-[60%]'
+                        />
+                    </section>
+                    <LegacyOfHero />
+                    <InfoScrolling text={infoScrollingParagraphsThird} />
+                    <Gallery />
+                    <End />
+                </main>
+            </div>
+        </>
+    );
 }
 
-export default App
+export default App;
