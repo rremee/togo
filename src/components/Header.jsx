@@ -6,8 +6,8 @@ import {useLayoutEffect} from "react";
 const Header = ({isStarted}) => {
 
 	useLayoutEffect(() => {
-		gsap.set('#header a', { opacity: 0 });
-		gsap.set('#header canvas', { opacity: 0 });
+		gsap.set('#header a', { opacity: 0, xPercent: -50 });
+		gsap.set('#header canvas', { opacity: 0, xPercent: 50 });
 	}, []);
 
 	useGSAP(() => {
@@ -16,14 +16,14 @@ const Header = ({isStarted}) => {
 		gsap.to('#header a', {
 			duration: 1,
 			ease: 'power1.out',
-			xPercent: 50,
+			xPercent: 0,
 			opacity: 1
 		})
 
 		gsap.to('#header canvas', {
 			duration: 1,
 			ease: 'power1.out',
-			xPercent: -50,
+			xPercent: 0,
 			opacity: 1
 		})
 	}, [isStarted]);
