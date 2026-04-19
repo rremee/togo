@@ -23,9 +23,10 @@ const JourneyTrain = () => {
 			xPercent: 100,
 			duration: 25,
 			ease: 'none',
+			repeat: -1,
 			scrollTrigger: {
 				trigger: containerRef.current,
-				start: 'top 70%',
+				start: 'top 85%',
 				invalidateOnRefresh: true
 			}
 		})

@@ -14,7 +14,7 @@ const InfoScrolling = ({text}) => {
 			scrollTrigger: {
 				trigger: container,
 				start: 'top top',
-				end: `+=${items.length * 200}%`,
+				end: `+=${items.length * 150}%`,
 				scrub: 1,
 				pin: true
 			}

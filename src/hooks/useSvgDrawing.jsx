@@ -26,7 +26,7 @@ const useSvgDrawing = (containerRef, animations = []) => {
 							ease: 'power2.out',
 							scrollTrigger: {
 								trigger: triggerEl,
-								start: 'top 40%',
+								start: 'top 60%',
 								once: true,
 								onEnter: enter ? () => {
 									gsap.to(el, {
