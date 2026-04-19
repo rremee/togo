@@ -1,6 +1,7 @@
 import {useState, useEffect, useLayoutEffect, useRef, useCallback}  from 'react';
 import gsap from 'gsap';
 import {ScrollTrigger, SplitText} from "gsap/all";
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import InfoScrolling from "./components/InfoScrolling.jsx";
@@ -49,6 +50,7 @@ function App() {
 
     return (
         <>
+            <SpeedInsights />
             <Cursor isStart={isStart}/>
             {!isStart && (
                 <div
