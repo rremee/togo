@@ -23,7 +23,7 @@ const End = () => {
 	const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin,
 		  shareUrl = encodeURIComponent(siteUrl),
 		  shareText = encodeURIComponent('Check out this awesome story about hero sled dog!'),
-		  shareImage = encodeURIComponent(`${siteUrl}/images/cover-image.jpg`);
+		  shareImage = encodeURIComponent(`${siteUrl}/images/cover-image.webp`);
 
 	return (
 		<footer ref={containerRef} id="end" className='py-10 sm:py-18 bg-end section-margin relative min-h-[740px]'>

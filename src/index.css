@@ -236,17 +236,17 @@
     .lead-view-img {
         @apply w-full desktop:max-w-195 h-80 max-[500px]:h-50 md:h-104;
         background: var(--gradient),
-                    url("/images/lead-1.png") center / cover no-repeat;
+                    url("/images/lead-1.webp") center / cover no-repeat;
     }
     .intro-gr-view-img {
         @apply w-full desktop:max-w-195 h-80 max-[500px]:h-50 md:h-104;
         background: var(--gradient),
-                    url("/images/great-race-intro-view.png") center / cover no-repeat;
+                    url("/images/great-race-intro-view.webp") center / cover no-repeat;
     }
     .legacy-img {
         @apply w-full desktop:max-w-322 h-80 max-[500px]:h-60 md:h-176;
         background: var(--gradient),
-                    url("/images/legacy-main.png") center / cover no-repeat;
+                    url("/images/legacy-main.webp") center / cover no-repeat;
     }
 
     .marquee {

@@ -27,7 +27,7 @@ function App() {
     const overlayRef = useRef(null);
 
     useEffect(() => {
-        new Image().src = '/images/home-img.jpg';
+        new Image().src = '/images/home-img.webp';
     }, []);
 
     useLayoutEffect(() => {

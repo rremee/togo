@@ -37,7 +37,7 @@ const BackgroundFirst = () => {
 				<div className="w-full desktop:col-start-1 desktop:col-end-3 desktop:row-start-1">
 					<img
 						ref={imageRef}
-						src="/images/background-1.png"
+						src="/images/background-1.webp"
 						alt="Puppy Togo"
 						className="w-full h-auto object-cover"
 					/>
@@ -86,7 +86,7 @@ const BackgroundSecond = () => {
 	return (
 		<div ref={containerRef} id='puppy-background' className='section-margin relative overflow-hidden'>
 			<div className='bg-image-parallax bg-left' style={{backgroundImage: `var(--gradient),
-                    url("/images/background-2.png")`}}>
+                    url("/images/background-2.webp")`}}>
 			</div>
 			<div className="section-container">
 				<div className='space-y-20 max-w-115 justify-self-end'>

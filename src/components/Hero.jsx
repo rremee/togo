@@ -73,7 +73,7 @@ const Hero = ({ isStart }) => {
 			<div
 				ref={bgRef}
 				className='bg-image-parallax bg-center'
-				style={{ backgroundImage: `var(--gradient), url("/images/home-img.jpg")` }}
+				style={{ backgroundImage: `var(--gradient), url("/images/home-img.webp")` }}
 			/>
 			<div className="section-container">
 				<div className='flex flex-col gap-[clamp(10px,5vw,26px)] text-center items-center'>
