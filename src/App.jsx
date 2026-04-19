@@ -8,7 +8,8 @@ import {infoScrollingParagraphsFirst, infoScrollingParagraphsThird} from "./cons
 import HeadingScrollHorizontal from "./components/HeadingScrollHorizontal.jsx";
 import BackgroundView from "./components/BackgroundView.jsx";
 import LeadSection from "./components/LeadSection.jsx";
-import Mountains from "./components/Mountains.jsx";
+import {lazy, Suspense} from 'react';
+const Mountains = lazy(() => import('./components/Mountains.jsx'));
 import IntroGreatRace from "./components/IntroGreatRace.jsx";
 import JourneyGreatRace from "./components/JourneyGreatRace.jsx";
 import MapJourney from "./components/MapJourney.jsx";
@@ -81,7 +82,9 @@ function App() {
                     <HeadingScrollHorizontal header='Background' />
                     <BackgroundView />
                     <LeadSection />
-                    <Mountains />
+                    <Suspense fallback={<div style={{minHeight: '100vh'}} />}>
+                        <Mountains />
+                    </Suspense>
                     <section id='great-race' className='theme-light relative z-10'>
                         <HeadingScrollHorizontal header='Great Race of Mercy' />
                         <IntroGreatRace />

@@ -108,7 +108,7 @@ const BtnAudio = ({autoStart}) => {
 	return (
 		<>
 			<canvas ref={canvasRef} onClick={handleToggle} className='audio-btn'></canvas>
-			<audio ref={audioRef} src="/audio/song.mp3" id='audio' loop></audio>
+			<audio ref={audioRef} src="/audio/song.mp3" id='audio' loop preload="none"></audio>
 		</>
 	);
 };
